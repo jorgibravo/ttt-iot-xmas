@@ -1,0 +1,19 @@
+{
+  "name": "christmas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-watch --watch node ./main/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-watch": "^2.0.7"
+  }
+}
