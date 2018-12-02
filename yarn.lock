@@ -1263,7 +1263,7 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-nan@^2.9.2:
+nan@^2.0.9, nan@^2.9.2:
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
   integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
@@ -1603,6 +1603,13 @@ rimraf@^2.6.1:
   integrity sha512-lreewLK/BlghmxtfH36YYVg1i8IAce4TI7oao75I1g245+6BctqTVQiBP3YUJ9C6DQOXJmkYR9X9fCLtCOJc5w==
   dependencies:
     glob "^7.0.5"
+
+rpi-ws281x-native@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/rpi-ws281x-native/-/rpi-ws281x-native-0.9.0.tgz#c89a6c292d8a97fe855fbfac4fe600b0765c55cb"
+  integrity sha512-Wj5X2iZyI5LMzxQeUoRpQJLIMWmthFDiOrcgRsIjZaebyzLsM0QtZ309YSF0enDYNdSQj+y0pmn9+uDHyvO/8A==
+  dependencies:
+    nan "^2.0.9"
 
 safe-buffer@5.1.2, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
