@@ -1,9 +1,9 @@
 
-const changeLightShow = type => {
+const setLightMode = type => {
   console.log('type:', type);
   return `Changed lights to ${type}`;
 };
 
 module.exports = {
-  changeLightShow: changeLightShow
+  setLightMode: setLightMode
 };
