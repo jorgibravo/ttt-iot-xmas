@@ -1,4 +1,4 @@
-const ws281x = require('ws281x-native');
+const ws281x = require('rpi-ws281x-native');
 
 const setLightMode = type => {
   console.log('type:', type);
