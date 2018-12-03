@@ -173,6 +173,8 @@ const setLightMode = type => {
     case 'chase':
     case 'red':
     case 'green':
+      clearInterval(activeAnimation);
+      ws281x.reset();
       activeAnimation = playAnimation(type);
       animationName = type;
       break;
