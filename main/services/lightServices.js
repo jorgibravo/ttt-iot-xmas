@@ -9,7 +9,7 @@ const ws281x = require('rpi-ws281x-native');
 // \_____\____/ |_| \_|_|    |_____\_____|
 // _____________________________________________________________________________
 //
-let ledSpeed = 50; // The speed of the animation
+let ledSpeed = 200; // The speed of the animation
 const NUM_LEDS = 4; // Number of LEDs on the LED Strip
 let activeAnimation = null; // The Current / Default animation as a <Timeout>
 let animationName = 'off';
