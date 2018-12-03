@@ -39,9 +39,7 @@ class App extends Component {
   handleChange = name => event => {
     //
     const urlType = name === 'animationName' ? 'mode' : 'speed';
-    if (name === 'animationName') {
-      axios.get(`/lights/${urlType}/${event.target.value}`);
-    }
+    axios.get(`/lights/${urlType}/${event.target.value}`);
     //
     this.setState({ [name]: event.target.value });
   };
