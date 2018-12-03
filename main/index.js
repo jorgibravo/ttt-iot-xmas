@@ -13,12 +13,12 @@ app.use((req, res, next) => {
 });
 
 app.get('/lights/mode/:command', function (req, res) {
-  console.log('req :', req);
+  // console.log('req :', req);
   res.send(lightServices.setLightMode(req.params.command));
 });
 //
 app.get('/lights/status', function (req, res) {
-  console.log('req :', req);
+  // console.log('req :', req);
   res.send(lightServices.getLightStatus());
 });
 //
