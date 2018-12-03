@@ -20,6 +20,27 @@
     "http"
   ],
   "paths": {
+    "/lights/status": {
+      "get": {
+        "tags": [
+          "lights"
+        ],
+        "summary": "Light status",
+        "description": "Gets the status of the light strip",
+        "operationId": "getLightStatus",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation"
+          },
+          "500": {
+            "description": "Generic Error"
+          }
+        }
+      }
+    },
     "/lights/mode/{command}": {
       "get": {
         "tags": [
@@ -51,16 +72,27 @@
         }
       }
     },
-    "/lights/status": {
+    "/lights/speed/{speed}": {
       "get": {
         "tags": [
           "lights"
         ],
-        "summary": "Light status",
-        "description": "Gets the status of the light strip",
-        "operationId": "getLightStatus",
+        "summary": "Sets the speed for the animation",
+        "description": "Sets the speed for the animation",
+        "operationId": "setLightSpeed",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "speed",
+            "in": "path",
+            "description": "The argument for new speed in ms, has to be between 50 and 1000",
+            "required": true,
+            "type": "number",
+            "minimum": 50,
+            "maximum": 1000
+          }
         ],
         "responses": {
           "200": {
