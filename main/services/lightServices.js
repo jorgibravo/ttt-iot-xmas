@@ -61,7 +61,7 @@ const colorwheel = pos => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  console.log('DIRECTION:', direction, 'ledId:', ledId);
+  // console.log('DIRECTION:', direction, 'ledId:', ledId);
   if (direction === 'FORWARD') {
     if (ledId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
@@ -126,7 +126,6 @@ const playAnimation = type => {
     case 'chase':
       continousAnimation = true;
       animationToReturn = setInterval(() => {
-        console.log('__');
         for (let i = 0; i < NUM_LEDS; i += 1) {
           if ((i + ledId) % 2 === 0) {
             pixelData[i] = rgb2Int(127, 0, 0);
@@ -171,7 +170,6 @@ const playAnimation = type => {
 //
 // This is the function that we call as the API endpoint for setLightMode
 const setLightMode = type => {
-  console.log('type:', type);
   //
   switch (type) {
     case 'rainbow':
@@ -195,7 +193,6 @@ const setLightMode = type => {
       Error(`This is not a valid option`);
   }
   //
-  console.log('activeAnimation:', activeAnimation);
   return `Changed lights to ${type}`;
 };
 //
