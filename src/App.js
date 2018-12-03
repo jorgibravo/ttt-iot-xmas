@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ledSpeed: 200,
+      ledSpeed: '200',
       animationName: 'off',
     };
   }
