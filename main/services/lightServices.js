@@ -66,6 +66,9 @@ const increment = () => {
     if (ledId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
         direction = 'REVERSE';
+        if (animationName === 'chase') {
+          ledId -= 1;
+        }
       }
     } else {
       ledId += 1;
@@ -73,6 +76,9 @@ const increment = () => {
   } else if (ledId === 0) {
     if (continousAnimation === true) {
       direction = 'FORWARD';
+      if (animationName === 'chase') {
+        ledId += 1;
+      }
     }
   } else {
     ledId -= 1;
