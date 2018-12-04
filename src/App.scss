@@ -13,9 +13,12 @@ html {
   height: 100vh;
   //
   .ttt-header {
+    background-color: #235E6F;
+    border-bottom: 6px solid white;
 
     .ttt-title {
       width: 100%;
+      color: white;
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -34,7 +37,9 @@ html {
     }
   }
   .body-container {
+    background-color: #34A65F;
     height: 100%;
+    color: white;
     //
     .ttt-formContainer {
       box-sizing: border-box;
@@ -42,11 +47,21 @@ html {
       //
       .ttt-card {
         box-sizing: border-box;
+        background-color: #CC231E;
         margin: 0 25px;
         //
         .ttt-cardContent {
+          border: 6px solid white;
           .ttt-selectContainer {
             width: 100%;
+            label {
+              font-weight: bold;
+              color: white;
+            }
+            select {
+              font-weight: bold;
+              color: white;
+            }
           }
         }
       }
@@ -59,12 +74,15 @@ html {
   //
   .ttt-footer {
     box-sizing: border-box;
+    background-color: #235E6F;
+    border-top: 6px solid white;
     top: auto;
     bottom: 0;
     position: fixed;
     //
     .ttt-title {
       width: 100%;
+      color: white;
       font-weight: bold;
       display: flex;
       align-items: center;
