@@ -59,7 +59,7 @@
             "description": "The argument for new light mode",
             "required": true,
             "type": "string",
-            "enum": ["off", "rainbow"]
+            "enum": ["off", "chase", "rainbow", "scanner", "red", "green"]
           }
         ],
         "responses": {

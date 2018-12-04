@@ -10,6 +10,7 @@ const ws281x = require('rpi-ws281x-native');
 // _____________________________________________________________________________
 //
 let ledSpeed = 200; // The speed of the animation
+let actionCounter = 0;
 const ledNumberArgument = process.argv[2] && parseInt(process.argv[2], 10);
 let NUM_LEDS = Number.isInteger(ledNumberArgument) || 4; // Number of LEDs on the LED Strip
 if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
@@ -17,6 +18,10 @@ if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 
 }
 let activeAnimation = null; // The Current / Default animation as a <Timeout>
 let animationName = 'off';
+let direction = 'FORWARD'; // Direction of the Loop
+let ledId = 0; // Loop step id
+let continousAnimation = true; // If the animation should end after first run, or keep going
+//
 // _____________________________________________________________________________
 //  _____ ____  _      ____   _____       _    _ _______ _____ _       _____
 // / ____/ __ \| |    / __ \ |  __ \     | |  | |__   __|_   _| |     / ____|
@@ -51,16 +56,54 @@ const colorwheel = pos => {
   return colorToReturn;
 };
 //
+// _____________________________________________________________________________
+//      _        _ _____ __  __       _______ _____ ____  _   _
+//     /\   | \ | |_   _|  \/  |   /\|__   __|_   _/ __ \| \ | |
+//    /  \  |  \| | | | | \  / |  /  \  | |    | || |  | |  \| |
+//   / /\ \ | . ` | | | | |\/| | / /\ \ | |    | || |  | | . ` |
+//  / ____ \| |\  |_| |_| |  | |/ ____ \| |   _| || |__| | |\  |
+// /_/    \_\_| \_|_____|_|  |_/_/    \_\_|  |_____\____/|_| \_|
+// _____________________________________________________________________________
+//
+// This handles the loop outside of the intervalFunctions
+const increment = () => {
+  // console.log('DIRECTION:', direction, 'ledId:', ledId);
+  if (direction === 'FORWARD') {
+    if (ledId === NUM_LEDS - 1) {
+      if (continousAnimation === true) {
+        direction = 'REVERSE';
+        if (animationName === 'chase') {
+          ledId -= 1;
+        }
+      }
+    } else {
+      ledId += 1;
+    }
+  } else if (ledId === 0) {
+    if (continousAnimation === true) {
+      direction = 'FORWARD';
+      if (animationName === 'chase') {
+        ledId += 1;
+      }
+    }
+  } else {
+    ledId -= 1;
+  }
+};
+//
 // This is where we kickoff the animations based on the type
 const playAnimation = type => {
   initLEDs(NUM_LEDS);
+  ledId = 0;
   let animationToReturn = null;
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   let offset = 0;
+  const color = type === 'red' ? rgb2Int(255, 0, 0) : rgb2Int(0, 255, 0);
   //
   switch (type) {
     case 'rainbow':
+      continousAnimation = true;
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
           pixelData[i] = colorwheel((offset + i) % 256);
@@ -69,6 +112,50 @@ const playAnimation = type => {
         offset = (offset + 1) % 256;
         ws281x.render(pixelData);
       }, ledSpeed);
+      break;
+    case 'scanner':
+      continousAnimation = true;
+      animationToReturn = setInterval(() => {
+        for (let i = 0; i < NUM_LEDS; i += 1) {
+          if (i === ledId) {
+            pixelData[i] = rgb2Int(255, 0, 0);
+          } else if ((direction === 'FORWARD' && i === ledId - 1) || (direction === 'REVERSE' && i === ledId + 1)) {
+            pixelData[i] = rgb2Int(255, 0, 0);
+          } else {
+            pixelData[i] = rgb2Int(0, 0, 0);
+          }
+        }
+        ws281x.render(pixelData);
+        increment();
+      }, ledSpeed);
+      break;
+    case 'chase':
+      continousAnimation = true;
+      animationToReturn = setInterval(() => {
+        for (let i = 0; i < NUM_LEDS; i += 1) {
+          if ((i + ledId) % 2 === 0) {
+            pixelData[i] = rgb2Int(127, 0, 0);
+          } else {
+            pixelData[i] = rgb2Int(0, 127, 0);
+          }
+        }
+        ws281x.render(pixelData);
+        increment();
+      }, ledSpeed);
+      break;
+    case 'red':
+    case 'green':
+      continousAnimation = false;
+      animationToReturn = setInterval(() => {
+        pixelData[ledId] = color;
+        ws281x.render(pixelData);
+        if (ledId + 1 < NUM_LEDS) {
+          increment();
+        } else {
+          clearInterval(activeAnimation);
+        }
+      }, ledSpeed);
+      //
       break;
     default:
       Error(`This is not a valid option`);
@@ -90,9 +177,14 @@ const playAnimation = type => {
 // This is the function that we call as the API endpoint for setLightMode
 const setLightMode = type => {
   //
+  actionCounter += 1;
   switch (type) {
     case 'rainbow':
-      if (animationName !== 'off') {
+    case 'scanner':
+    case 'chase':
+    case 'red':
+    case 'green':
+      if (animationName !== 'off' && animationName !== 'red' && animationName !== 'green') {
         clearInterval(activeAnimation);
         ws281x.reset();
       }
@@ -109,14 +201,25 @@ const setLightMode = type => {
   }
   //
   const returnMessage = `Changed lights to ${type}`;
+  console.log(` - Action Counter: ${actionCounter}`);
   console.log(` - ${returnMessage}`);
   console.log(`_________________________________`);
   return returnMessage;
 };
 //
+// This is the function that we call as the API endpoint for getLightStatus
+const getLightStatus = () => {
+  const ledDetails = {
+    ledSpeed,
+    animationName,
+    continousAnimation,
+  };
+  return ledDetails;
+};
 //
 // Sets the new speed for the animation
 const setLightSpeed = speed => {
+  actionCounter += 1;
   const speedAsNumber = parseInt(speed, 10);
   if (Number.isInteger(speedAsNumber)) {
     ledSpeed = speedAsNumber;
@@ -128,23 +231,13 @@ const setLightSpeed = speed => {
       activeAnimation = playAnimation(animationName);
     }
     const returnMessage = `Changed speed to ${speed}`;
+    console.log(` - Action Counter: ${actionCounter}`);
     console.log(` - ${returnMessage}`);
     console.log(`_________________________________`);
     return returnMessage;
   }
   throw new Error('Not a valid speed');
 };
-//
-//
-// This is the function that we call as the API endpoint for getLightStatus
-const getLightStatus = () => {
-  const ledDetails = {
-    animationName,
-    ledSpeed,
-  };
-  return ledDetails;
-};
-//
 //
 // Reset the LED Strip on Ctrl + C
 process.on('SIGINT', () => {

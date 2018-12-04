@@ -1,11 +1,5 @@
-We are going to Create our another API to set the speed of the Animation
-We should follow the same approach that we used in the previous step:
-
-- Create Swagger Design for setLightSpeed
-- Create Routing with Express
-- Write Function to save the speed
-- Modify status api to return the speed
-- Export the function
+We are going to add more animation patterns to the lightServices!
+Don't forget to update the SWAGGEr to make them available as options!
 
 > Test with
 ```
