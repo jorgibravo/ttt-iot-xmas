@@ -10,7 +10,12 @@ const ws281x = require('rpi-ws281x-native');
 // _____________________________________________________________________________
 //
 let ledSpeed = 200; // The speed of the animation
-const NUM_LEDS = 4; // Number of LEDs on the LED Strip
+let actionCounter = 0;
+const ledNumberArgument = process.argv[2] && parseInt(process.argv[2], 10);
+let NUM_LEDS = Number.isInteger(ledNumberArgument) || 4; // Number of LEDs on the LED Strip
+if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
+  NUM_LEDS = parseInt(process.argv[2], 10);
+}
 let activeAnimation = null; // The Current / Default animation as a <Timeout>
 let animationName = 'off';
 let direction = 'FORWARD'; // Direction of the Loop
@@ -28,6 +33,7 @@ let continousAnimation = true; // If the animation should end after first run, o
 //
 // Initialize the LED Strip
 const initLEDs = numberOfLEds => {
+  console.log(` - Initialized ws281x with ${NUM_LEDS} LEDs`);
   ws281x.init(numberOfLEds);
 };
 //
@@ -171,6 +177,7 @@ const playAnimation = type => {
 // This is the function that we call as the API endpoint for setLightMode
 const setLightMode = type => {
   //
+  actionCounter += 1;
   switch (type) {
     case 'rainbow':
     case 'scanner':
@@ -193,7 +200,11 @@ const setLightMode = type => {
       Error(`This is not a valid option`);
   }
   //
-  return `Changed lights to ${type}`;
+  const returnMessage = `Changed lights to ${type}`;
+  console.log(` - Action Counter: ${actionCounter}`);
+  console.log(` - ${returnMessage}`);
+  console.log(`_________________________________`);
+  return returnMessage;
 };
 //
 // This is the function that we call as the API endpoint for getLightStatus
@@ -208,6 +219,7 @@ const getLightStatus = () => {
 //
 // Sets the new speed for the animation
 const setLightSpeed = speed => {
+  actionCounter += 1;
   const speedAsNumber = parseInt(speed, 10);
   if (Number.isInteger(speedAsNumber)) {
     ledSpeed = speedAsNumber;
@@ -218,7 +230,11 @@ const setLightSpeed = speed => {
       ws281x.reset();
       activeAnimation = playAnimation(animationName);
     }
-    return `New speed is set to ${speed}`;
+    const returnMessage = `Changed speed to ${speed}`;
+    console.log(` - Action Counter: ${actionCounter}`);
+    console.log(` - ${returnMessage}`);
+    console.log(`_________________________________`);
+    return returnMessage;
   }
   throw new Error('Not a valid speed');
 };
