@@ -14,11 +14,14 @@ The purpose of this demonstration is to showcase an example project that can be 
 - WS2812B Female Male 3-Pin Connectors: ~ 0.3 USD / pair
 - 3.3V to 5V Logic Level Converter: ~ 3 USD
 **TOTAL:** ~53 USD
+
 ---
+
 #### Software:
 ##### Back-End:
 - Node Js v8.10.0
 - Swagger with OpenApi 3
+
 ##### Front-End:
 - React v16.6.3
 - Material-UI v3.6.1
