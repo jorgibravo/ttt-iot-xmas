@@ -87,6 +87,7 @@ const increment = () => {
 //
 // This is where we kickoff the animations based on the type
 const playAnimation = type => {
+  initLEDs(NUM_LEDS);
   ledId = 0;
   let animationToReturn = null;
   const pixelData = new Uint32Array(NUM_LEDS);
@@ -170,7 +171,6 @@ const playAnimation = type => {
 // This is the function that we call as the API endpoint for setLightMode
 const setLightMode = type => {
   //
-  initLEDs(NUM_LEDS);
   switch (type) {
     case 'rainbow':
     case 'scanner':

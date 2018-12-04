@@ -52,7 +52,16 @@ class App extends Component {
         <AppBar className="ttt-header" position="static">
           <Toolbar>
             <Typography className="ttt-title" variant="h6">
-              Black Swan Budapest - TTT Xmas IOT LED Lights
+              <span>Thursday Tech Talk</span>
+              <div className="ttt-emoHolder">
+                <span role="img" aria-label="Chrismtas Tree">
+                  🎄
+                </span>
+                <span className="ttt-subtitle">Xmas IOT LED Lights</span>
+                <span role="img" aria-label="Chrismtas Tree">
+                  🎄
+                </span>
+              </div>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -107,6 +116,13 @@ class App extends Component {
             </Card>
           </div>
         </div>
+        <AppBar className="ttt-footer" position="static">
+          <Toolbar>
+            <Typography className="ttt-title" variant="h6">
+              Black Swan Budapest 2018
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
     );
   }
