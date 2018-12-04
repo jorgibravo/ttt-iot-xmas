@@ -9,6 +9,7 @@ const ws281x = require('rpi-ws281x-native');
 // \_____\____/ |_| \_|_|    |_____\_____|
 // _____________________________________________________________________________
 //
+let ledSpeed = 200; // The speed of the animation
 const ledNumberArgument = process.argv[2] && parseInt(process.argv[2], 10);
 let NUM_LEDS = Number.isInteger(ledNumberArgument) || 4; // Number of LEDs on the LED Strip
 if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
@@ -67,7 +68,7 @@ const playAnimation = type => {
         //
         offset = (offset + 1) % 256;
         ws281x.render(pixelData);
-      }, 200);
+      }, ledSpeed);
       break;
     default:
       Error(`This is not a valid option`);
@@ -113,10 +114,33 @@ const setLightMode = type => {
   return returnMessage;
 };
 //
+//
+// Sets the new speed for the animation
+const setLightSpeed = speed => {
+  const speedAsNumber = parseInt(speed, 10);
+  if (Number.isInteger(speedAsNumber)) {
+    ledSpeed = speedAsNumber;
+    //
+    // Restart Animation with the new Speed
+    if (animationName !== 'off' && animationName !== 'red' && animationName !== 'green') {
+      clearInterval(activeAnimation);
+      ws281x.reset();
+      activeAnimation = playAnimation(animationName);
+    }
+    const returnMessage = `Changed speed to ${speed}`;
+    console.log(` - ${returnMessage}`);
+    console.log(`_________________________________`);
+    return returnMessage;
+  }
+  throw new Error('Not a valid speed');
+};
+//
+//
 // This is the function that we call as the API endpoint for getLightStatus
 const getLightStatus = () => {
   const ledDetails = {
     animationName,
+    ledSpeed,
   };
   return ledDetails;
 };
@@ -131,4 +155,5 @@ process.on('SIGINT', () => {
 module.exports = {
   setLightMode: setLightMode,
   getLightStatus: getLightStatus,
+  setLightSpeed: setLightSpeed,
 };

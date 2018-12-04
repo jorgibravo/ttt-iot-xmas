@@ -21,6 +21,10 @@ app.get('/lights/status', (req, res) => {
   res.send(lightServices.getLightStatus());
 });
 //
+app.get('/lights/speed/:speed', (req, res) => {
+  res.send(lightServices.setLightSpeed(req.params.speed));
+});
+//
 app.use(express.static(path.join(__dirname, '../build')));
 //
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

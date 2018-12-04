@@ -71,6 +71,38 @@
           }
         }
       }
+    },
+    "/lights/speed/{speed}": {
+      "get": {
+        "tags": [
+          "lights"
+        ],
+        "summary": "Sets the speed for the animation",
+        "description": "Sets the speed for the animation",
+        "operationId": "setLightSpeed",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "speed",
+            "in": "path",
+            "description": "The argument for new speed in ms, has to be between 50 and 1000",
+            "required": true,
+            "type": "number",
+            "minimum": 50,
+            "maximum": 1000
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation"
+          },
+          "500": {
+            "description": "Generic Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
