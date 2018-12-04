@@ -1,27 +1,14 @@
-In this step we are going to setup our project to host the [OpenApi](OpenAPI Specification (formerly Swagger Specification) documentation through [SWAGGER UI](https://swagger.io/tools/swagger-ui/).
+We are going to give a try to the Example code found on:
+https://blog.hypriot.com/post/drive-neopixels-in-docker/
 
-Download an OpenApi example from here: https://editor.swagger.io/
-```
-File > Convert and save as JSON
-Copy file to project root folder > swagger.json
-```
+copy the code into ./main/rainbow.js
 
-Import the dependency into ./main/index.js
+We are going to Fix it according to the Linting recommendations then See the code in action by running
 ```
-const swaggerDocument = require('../swagger.json');
+node ./main/rainbow_fixed.js
 ```
 
-Configure Express to serve the api documentation through the Swagger UI, by adding the following line to ./main/index.js
+Or on The RPI:
 ```
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-```
-
-RUN the project with:
-```
-yarn start
-```
-
-Open the SWAGGER UI on:
-```
-http://localhost:8080/api-docs/
+sudo node ./main/rainbow_fixed.js
 ```
