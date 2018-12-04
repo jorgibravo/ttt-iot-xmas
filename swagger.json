@@ -20,6 +20,27 @@
     "http"
   ],
   "paths": {
+    "/lights/status": {
+      "get": {
+        "tags": [
+          "lights"
+        ],
+        "summary": "Light status",
+        "description": "Gets the status of the light strip",
+        "operationId": "getLightStatus",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation"
+          },
+          "500": {
+            "description": "Generic Error"
+          }
+        }
+      }
+    },
     "/lights/mode/{command}": {
       "get": {
         "tags": [

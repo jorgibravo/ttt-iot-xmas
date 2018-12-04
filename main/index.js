@@ -17,6 +17,10 @@ app.get('/lights/mode/:command', (req, res) => {
   res.send(lightServices.setLightMode(req.params.command));
 });
 //
+app.get('/lights/status', (req, res) => {
+  res.send(lightServices.getLightStatus());
+});
+//
 app.use(express.static(path.join(__dirname, '../build')));
 //
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

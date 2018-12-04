@@ -113,6 +113,15 @@ const setLightMode = type => {
   return returnMessage;
 };
 //
+// This is the function that we call as the API endpoint for getLightStatus
+const getLightStatus = () => {
+  const ledDetails = {
+    animationName,
+  };
+  return ledDetails;
+};
+//
+//
 // Reset the LED Strip on Ctrl + C
 process.on('SIGINT', () => {
   ws281x.reset();
@@ -121,4 +130,5 @@ process.on('SIGINT', () => {
 //
 module.exports = {
   setLightMode: setLightMode,
+  getLightStatus: getLightStatus,
 };

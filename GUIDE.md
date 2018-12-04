@@ -1,29 +1,10 @@
-We are going to Create our first API to trigger the Rainbow Function from SWAGGER
+We are going to Create our another API to get the status of the LEDStrip that returns the activeAnimation
+We should follow the same approach that we used in the previous step:
 
-> Create the file:
-```
-./main/services/lightServices.js
-```
-
-> Convert the rainbow.js to a function that we can call
-
-
-> Add Epic comment blocks by using:
-http://patorjk.com/software/taag/#p=display&f=Small&t=myComment
-
-
-> Modify the Swagger to point to our function and handle input
-
-
-> Configure Express to forward the API call to the our function by modifying ./index.js
-```
-const lightServices = require('./services/lightServices.js');
-//
-app.get('/lights/mode/:command', (req, res) => {
-  res.send(lightServices.setLightMode(req.params.command));
-});
-//
-```
+- Create Swagger Design
+- Create Routing with Express
+- Write Function to return the data
+- Export the function
 
 > Test with
 ```
