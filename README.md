@@ -34,7 +34,9 @@ The purpose of this demonstration is to showcase an example project that can be 
 - Babel
 - [Text to ASCII generator](http://patorjk.com/software/taag/#p=display&f=Small&t=myComment)
 - NodeJs LEDStrip controller: [rpi-ws281x-native](https://www.npmjs.com/package/rpi-ws281x-native)
+
 ---
+
 ## HOW TO GET STARTED
 ### Step-By-Step on computer
 > Each step is separated into different branches, if you would like to follow the progress, you can start by checking out the first branch in numeric order. Each branch has it's own GUIDE.md to explain the details.
@@ -49,6 +51,7 @@ yarn start
 ```
 sudo node ./main/index.js
 ```
+
 ### Final Code
 > The master branch has the final code, that you can run on your computer after cloning the repo with the following commands:
 
