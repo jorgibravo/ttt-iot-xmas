@@ -1,0 +1,75 @@
+body {
+    max-width: 100%;
+    margin: 0px !important;
+}
+//
+html {
+  height: 100%;
+}
+//
+.App {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  height: 100vh;
+  //
+  .ttt-header {
+
+    .ttt-title {
+      width: 100%;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-size: 12pt;
+      //
+      .ttt-emoHolder {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        //
+        .ttt-subtitle {
+          font-size: 16pt;
+        }
+      }
+    }
+  }
+  .body-container {
+    height: 100%;
+    //
+    .ttt-formContainer {
+      box-sizing: border-box;
+      padding-top: 20px;
+      //
+      .ttt-card {
+        box-sizing: border-box;
+        margin: 0 25px;
+        //
+        .ttt-cardContent {
+          .ttt-selectContainer {
+            width: 100%;
+          }
+        }
+      }
+      //
+      .ttt-divider {
+        margin: 10px 25px;
+      }
+    }
+  }
+  //
+  .ttt-footer {
+    box-sizing: border-box;
+    top: auto;
+    bottom: 0;
+    position: fixed;
+    //
+    .ttt-title {
+      width: 100%;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-size: 12pt;
+    }
+  }
+}
