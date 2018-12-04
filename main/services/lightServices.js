@@ -10,7 +10,10 @@ const ws281x = require('rpi-ws281x-native');
 // _____________________________________________________________________________
 //
 let ledSpeed = 200; // The speed of the animation
-const NUM_LEDS = 4; // Number of LEDs on the LED Strip
+let NUM_LEDS = 4; // Number of LEDs on the LED Strip
+if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
+  NUM_LEDS = parseInt(process.argv[2], 10);
+}
 let activeAnimation = null; // The Current / Default animation as a <Timeout>
 let animationName = 'off';
 let direction = 'FORWARD'; // Direction of the Loop
@@ -28,6 +31,7 @@ let continousAnimation = true; // If the animation should end after first run, o
 //
 // Initialize the LED Strip
 const initLEDs = numberOfLEds => {
+  console.log(` - Initialized ws281x with ${NUM_LEDS} LEDs`);
   ws281x.init(numberOfLEds);
 };
 //
