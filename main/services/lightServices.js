@@ -184,7 +184,7 @@ const setLightMode = type => {
     case 'chase':
     case 'red':
     case 'green':
-      if (animationName !== 'off' && animationName !== 'red' && animationName !== 'green') {
+      if (animationName !== 'off') {
         clearInterval(activeAnimation);
         ws281x.reset();
       }
@@ -225,7 +225,7 @@ const setLightSpeed = speed => {
     ledSpeed = speedAsNumber;
     //
     // Restart Animation with the new Speed
-    if (animationName !== 'off' && animationName !== 'red' && animationName !== 'green') {
+    if (animationName !== 'off') {
       clearInterval(activeAnimation);
       ws281x.reset();
       activeAnimation = playAnimation(animationName);
