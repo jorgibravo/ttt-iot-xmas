@@ -183,6 +183,7 @@ const setLightMode = type => {
     case 'chase':
     case 'red':
     case 'green':
+      direction = 'FORWARD';
       if (animationName !== 'off') {
         console.log('clear interval from api');
         clearInterval(activeAnimation);
