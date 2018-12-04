@@ -1,5 +1,7 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
 const path = require('path');
+const swaggerDocument = require('../swagger.json');
 
 const app = express();
 const port = 8080;
@@ -11,6 +13,8 @@ app.use((req, res, next) => {
 });
 //
 app.use(express.static(path.join(__dirname, '../build')));
+//
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 //
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'));

@@ -1,6 +1,27 @@
-In this step we are going to prepare the project folders and install dependencies.
-Let's start with creating a [new react app](https://github.com/facebook/create-react-app):
+In this step we are going to setup our project to host the [OpenApi](OpenAPI Specification (formerly Swagger Specification) documentation through [SWAGGER UI](https://swagger.io/tools/swagger-ui/).
 
+Download an OpenApi example from here: https://editor.swagger.io/
 ```
-yarn create react-app ttt-xmas-iot
+File > Convert and save as JSON
+Copy file to project root folder > swagger.json
+```
+
+Import the dependency into ./main/index.js
+```
+const swaggerDocument = require('../swagger.json');
+```
+
+Configure Express to serve the api documentation through the Swagger UI, by adding the following line to ./main/index.js
+```
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+```
+
+RUN the project with:
+```
+yarn start
+```
+
+Open the SWAGGER UI on:
+```
+http://localhost:8080/api-docs/
 ```
