@@ -1,14 +1,31 @@
-We are going to give a try to the Example code found on:
-https://blog.hypriot.com/post/drive-neopixels-in-docker/
+We are going to Create our first API to trigger the Rainbow Function from SWAGGER
 
-copy the code into ./main/rainbow.js
-
-We are going to Fix it according to the Linting recommendations then See the code in action by running
+> Create the file:
 ```
-node ./main/rainbow_fixed.js
+./main/services/lightServices.js
 ```
 
-Or on The RPI:
+> Convert the rainbow.js to a function that we can call
+
+
+> Add Epic comment blocks by using:
+http://patorjk.com/software/taag/#p=display&f=Small&t=myComment
+
+
+> Modify the Swagger to point to our function and handle input
+
+
+> Configure Express to forward the API call to the our function by modifying ./index.js
 ```
-sudo node ./main/rainbow_fixed.js
+const lightServices = require('./services/lightServices.js');
+//
+app.get('/lights/mode/:command', (req, res) => {
+  res.send(lightServices.setLightMode(req.params.command));
+});
+//
+```
+
+> Test with
+```
+yarn start
 ```

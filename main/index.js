@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const path = require('path');
+const lightServices = require('./services/lightServices.js');
 const swaggerDocument = require('../swagger.json');
 
 const app = express();
@@ -10,6 +11,10 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
+});
+//
+app.get('/lights/mode/:command', (req, res) => {
+  res.send(lightServices.setLightMode(req.params.command));
 });
 //
 app.use(express.static(path.join(__dirname, '../build')));
