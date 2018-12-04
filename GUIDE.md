@@ -1,4 +1,4 @@
-In this step we are going to setup our project to host the [OpenApi](OpenAPI Specification (formerly Swagger Specification) documentation through [SWAGGER UI](https://swagger.io/tools/swagger-ui/).
+In this step we are going to setup our project to host the [OpenApi](https://swagger.io/docs/specification/about/) documentation through [SWAGGER UI](https://swagger.io/tools/swagger-ui/).
 
 Download an OpenApi example from here: https://editor.swagger.io/
 ```
