@@ -55,6 +55,10 @@ sudo node ./main/index.js
 ### Final Code
 > The master branch has the final code, that you can run on your computer after cloning the repo with the following commands:
 
+
+---
+
+
 ### Sources:
 - [Adafruit tutorials](https://learn.adafruit.com/adafruit-neopixel-uberguide?view=all)
 - [WS2812B on Raspberry](https://blog.hypriot.com/post/drive-neopixels-in-docker/)
