@@ -5,15 +5,22 @@ We are going to Create our first API to trigger the Rainbow Function from SWAGGE
 ./main/services/lightServices.js
 ```
 
+---
+
 > Convert the rainbow.js to a function that we can call
 
+
+---
 
 > Add Epic comment blocks by using:
 http://patorjk.com/software/taag/#p=display&f=Small&t=myComment
 
 
+---
+
 > Modify the Swagger to point to our function and handle input
 
+---
 
 > Configure Express to forward the API call to the our function by modifying ./index.js
 ```
@@ -25,7 +32,14 @@ app.get('/lights/mode/:command', (req, res) => {
 //
 ```
 
+---
+
 > Test with
 ```
 yarn start
+```
+
+or from the Raspberry:
+```
+sudo node ./main/index.js
 ```
