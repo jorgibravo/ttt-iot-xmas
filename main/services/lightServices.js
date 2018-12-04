@@ -67,7 +67,7 @@ const colorwheel = pos => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  console.log('DIRECTION:', direction, 'ledId:', ledId);
+  // console.log('DIRECTION:', direction, 'ledId:', ledId);
   if (direction === 'FORWARD') {
     if (ledId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
@@ -150,7 +150,6 @@ const playAnimation = type => {
         pixelData[ledId] = color;
         ws281x.render(pixelData);
         if (ledId + 1 < NUM_LEDS) {
-          console.log('Increment');
           increment();
         }
       }, ledSpeed);
@@ -185,7 +184,6 @@ const setLightMode = type => {
     case 'green':
       direction = 'FORWARD';
       if (animationName !== 'off') {
-        console.log('clear interval from api');
         clearInterval(activeAnimation);
         ws281x.reset();
       }
