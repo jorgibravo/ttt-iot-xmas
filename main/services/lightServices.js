@@ -155,6 +155,16 @@ const playAnimation = type => {
       }, ledSpeed);
       //
       break;
+    case 'lepcso':
+      continousAnimation = false;
+      animationToReturn = setInterval(() => {
+        for (let i = 0; i < NUM_LEDS; i += 1) {
+          pixelData[i] = rgb2Int(255, 255, 255);
+        }
+        ws281x.render(pixelData);
+        increment();
+      }, ledSpeed);
+      break;
     default:
       Error(`This is not a valid option`);
   }
@@ -181,6 +191,7 @@ const setLightMode = type => {
     case 'scanner':
     case 'chase':
     case 'red':
+    case 'lepcso':
     case 'green':
       direction = 'FORWARD';
       if (animationName !== 'off') {
