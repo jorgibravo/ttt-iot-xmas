@@ -315,7 +315,7 @@ pir.watch((err, value) => {
     setLightMode('lepcso');
   } else {
     console.log('Intruder gone');
-    setLightMode('off');
+    setLightMode('lepcsole');
   }
 });
 // Reset the LED Strip on Ctrl + C
