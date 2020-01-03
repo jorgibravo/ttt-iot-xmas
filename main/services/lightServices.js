@@ -173,14 +173,17 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
+        console.info('animacioLepesId:', animacioLepesId);
         if (animacioLepesId <= lepcsokSzama) {
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
             // pixelData[i] = rgb2Int(127, 0, 0);
-            const ezALepcso = ledekEzenALepcson[i];
-            // console.info('ledekEzenALepcson:', ledekEzenALepcson);
-            console.info('ezALepcso:', ezALepcso);
-            pixelData[animacioLepesId] = lepcsoColor;
+            console.info('ledekEzenALepcson:', ledekEzenALepcson);
+            if (ledekEzenALepcson) {
+              const ezALepcso = ledekEzenALepcson[i];
+              console.info('ezALepcso:', ezALepcso);
+              pixelData[animacioLepesId] = lepcsoColor;
+            }
           }
           ws281x.render(pixelData);
           if (animacioLepesId + 1 < NUM_LEDS) {
