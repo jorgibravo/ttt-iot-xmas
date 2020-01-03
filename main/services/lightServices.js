@@ -207,7 +207,7 @@ const playAnimation = type => {
             // pixelData[i] = rgb2Int(127, 0, 0);
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
-              console.info('ezALepcso:', ezALepcso);
+              // console.info('ezALepcso:', ezALepcso);
               pixelData[ezALepcso] = rgb2Int(0, 0, 0);
             }
           }
