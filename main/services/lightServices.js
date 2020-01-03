@@ -176,9 +176,9 @@ const playAnimation = type => {
         // console.info('animacioLepesId:', animacioLepesId);
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
+          console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             // pixelData[i] = rgb2Int(127, 0, 0);
-            console.info('ledekEzenALepcson:', ledekEzenALepcson);
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
               console.info('ezALepcso:', ezALepcso);
