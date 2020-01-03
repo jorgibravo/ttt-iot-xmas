@@ -186,7 +186,7 @@ const playAnimation = type => {
             }
           }
           ws281x.render(pixelData);
-          if (animacioLepesId + 1 < lepcsokSzama) {
+          if (animacioLepesId + 1 <= lepcsokSzama) {
             increment();
           }
         }
