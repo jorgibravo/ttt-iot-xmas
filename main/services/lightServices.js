@@ -173,7 +173,7 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
-        console.info('animacioLepesId:', animacioLepesId);
+        // console.info('animacioLepesId:', animacioLepesId);
         if (animacioLepesId < lepcsokSzama) {
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
