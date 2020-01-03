@@ -176,7 +176,9 @@ const playAnimation = type => {
         for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
           const ledekEzenALepcson = lepcsoLedek[ledId];
           // pixelData[i] = rgb2Int(127, 0, 0);
-          console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          const ezALepcso = ledekEzenALepcson[i];
+          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          console.info('ezALepcso:', ezALepcso);
         }
         pixelData[ledId] = lepcsoColor;
         ws281x.render(pixelData);
