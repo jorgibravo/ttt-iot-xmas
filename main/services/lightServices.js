@@ -99,8 +99,8 @@ const playAnimation = type => {
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   // PETI LEPCSO CONFIG
-  const ledekSzamaEgyLepcsonel = 2;
-  const lepcsokSzama = 2;
+  const ledekSzamaEgyLepcsonel = 5;
+  const lepcsokSzama = 10;
   const lepcsoLedek = [];
   let ledLepcsoId = 0;
   for (let i = 0; i < lepcsokSzama; i += 1) {
