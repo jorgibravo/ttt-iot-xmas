@@ -200,9 +200,10 @@ const playAnimation = type => {
       continousAnimation = false;
       animationToReturn = setInterval(() => {
         console.info('animacioLepesId:', animacioLepesId);
+        console.info('lepcsokSzama:', lepcsokSzama);
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
-          console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             // pixelData[i] = rgb2Int(127, 0, 0);
             if (ledekEzenALepcson) {
