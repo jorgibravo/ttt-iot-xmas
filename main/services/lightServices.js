@@ -1,4 +1,5 @@
 const ws281x = require('rpi-ws281x-native');
+const gpio = require('onoff').Gpio;
 
 // _____________________________________________________________________________
 //  _____ ____   _   _ ______ _____ _____
@@ -21,6 +22,16 @@ let animationName = 'off';
 let direction = 'FORWARD'; // Direction of the Loop
 let animacioLepesId = 0; // Loop step id
 let continousAnimation = true; // If the animation should end after first run, or keep going
+//
+// MOTION
+const pir = new gpio(12, 'in', 'both');
+pir.watch((err, value) => {
+  if (value === 1) {
+    console.log('Intruder alert');
+  } else {
+    console.log('Intruder gone');
+  }
+});
 //
 // _____________________________________________________________________________
 //  _____ ____  _      ____   _____       _    _ _______ _____ _       _____
