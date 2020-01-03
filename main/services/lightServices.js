@@ -199,6 +199,7 @@ const playAnimation = type => {
     case 'lepcsole':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
+        animacioLepesId = NUM_LEDS;
         console.info('animacioLepesId:', animacioLepesId);
         console.info('lepcsokSzama:', lepcsokSzama);
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
