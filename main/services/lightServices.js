@@ -19,7 +19,7 @@ if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 
 let activeAnimation = null; // The Current / Default animation as a <Timeout>
 let animationName = 'off';
 let direction = 'FORWARD'; // Direction of the Loop
-let ledId = 0; // Loop step id
+let animacioLepesId = 0; // Loop step id
 let continousAnimation = true; // If the animation should end after first run, or keep going
 //
 // _____________________________________________________________________________
@@ -67,34 +67,34 @@ const colorwheel = pos => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  // console.log('DIRECTION:', direction, 'ledId:', ledId);
+  // console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
   if (direction === 'FORWARD') {
-    if (ledId === NUM_LEDS - 1) {
+    if (animacioLepesId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
         direction = 'REVERSE';
         if (animationName === 'chase') {
-          ledId -= 1;
+          animacioLepesId -= 1;
         }
       }
     } else {
-      ledId += 1;
+      animacioLepesId += 1;
     }
-  } else if (ledId === 0) {
+  } else if (animacioLepesId === 0) {
     if (continousAnimation === true) {
       direction = 'FORWARD';
       if (animationName === 'chase') {
-        ledId += 1;
+        animacioLepesId += 1;
       }
     }
   } else {
-    ledId -= 1;
+    animacioLepesId -= 1;
   }
 };
 //
 // This is where we kickoff the animations based on the type
 const playAnimation = type => {
   initLEDs(NUM_LEDS);
-  ledId = 0;
+  animacioLepesId = 0;
   let animationToReturn = null;
   const pixelData = new Uint32Array(NUM_LEDS);
   //
@@ -132,9 +132,9 @@ const playAnimation = type => {
       continousAnimation = true;
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
-          if (i === ledId) {
+          if (i === animacioLepesId) {
             pixelData[i] = rgb2Int(255, 0, 0);
-          } else if ((direction === 'FORWARD' && i === ledId - 1) || (direction === 'REVERSE' && i === ledId + 1)) {
+          } else if ((direction === 'FORWARD' && i === animacioLepesId - 1) || (direction === 'REVERSE' && i === animacioLepesId + 1)) {
             pixelData[i] = rgb2Int(255, 0, 0);
           } else {
             pixelData[i] = rgb2Int(0, 0, 0);
@@ -148,7 +148,7 @@ const playAnimation = type => {
       continousAnimation = true;
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
-          if ((i + ledId) % 2 === 0) {
+          if ((i + animacioLepesId) % 2 === 0) {
             pixelData[i] = rgb2Int(127, 0, 0);
           } else {
             pixelData[i] = rgb2Int(0, 127, 0);
@@ -162,9 +162,9 @@ const playAnimation = type => {
     case 'green':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
-        pixelData[ledId] = color;
+        pixelData[animacioLepesId] = color;
         ws281x.render(pixelData);
-        if (ledId + 1 < NUM_LEDS) {
+        if (animacioLepesId + 1 < NUM_LEDS) {
           increment();
         }
       }, ledSpeed);
@@ -173,17 +173,19 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
-        for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-          const ledekEzenALepcson = lepcsoLedek[ledId];
-          // pixelData[i] = rgb2Int(127, 0, 0);
-          const ezALepcso = ledekEzenALepcson[i];
-          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
-          console.info('ezALepcso:', ezALepcso);
-        }
-        pixelData[ledId] = lepcsoColor;
-        ws281x.render(pixelData);
-        if (ledId + 1 < NUM_LEDS) {
-          increment();
+        if (lepcsokSzama <= animacioLepesId) {
+          for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
+            const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
+            // pixelData[i] = rgb2Int(127, 0, 0);
+            const ezALepcso = ledekEzenALepcson[i];
+            // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+            console.info('ezALepcso:', ezALepcso);
+            pixelData[animacioLepesId] = lepcsoColor;
+          }
+          ws281x.render(pixelData);
+          if (animacioLepesId + 1 < NUM_LEDS) {
+            increment();
+          }
         }
       }, ledSpeed);
       break;
