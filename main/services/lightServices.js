@@ -117,7 +117,7 @@ const playAnimation = type => {
   console.info('lepcsoLedek:', lepcsoLedek);
   //
   let offset = 0;
-  const lepcsoColor = rgb2Int(255, 255, 255);
+  const lepcsoColor = rgb2Int(125, 125, 125);
   const color = type === 'red' ? rgb2Int(255, 0, 0) : rgb2Int(0, 255, 0);
   //
   switch (type) {
@@ -177,6 +177,28 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
+        // console.info('animacioLepesId:', animacioLepesId);
+        if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
+          const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
+          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
+            // pixelData[i] = rgb2Int(127, 0, 0);
+            if (ledekEzenALepcson) {
+              const ezALepcso = ledekEzenALepcson[i];
+              // console.info('ezALepcso:', ezALepcso);
+              pixelData[ezALepcso] = lepcsoColor;
+            }
+          }
+          ws281x.render(pixelData);
+          if (animacioLepesId + 1 <= lepcsokSzama) {
+            increment();
+          }
+        }
+      }, ledSpeed);
+      break;
+    case 'lepcsole':
+      continousAnimation = false;
+      animationToReturn = setInterval(() => {
         console.info('animacioLepesId:', animacioLepesId);
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
@@ -229,6 +251,11 @@ const setLightMode = type => {
         clearInterval(activeAnimation);
         ws281x.reset();
       }
+      activeAnimation = playAnimation(type);
+      animationName = type;
+      break;
+    case 'lepcsole':
+      direction = 'REVERSE';
       activeAnimation = playAnimation(type);
       animationName = type;
       break;
