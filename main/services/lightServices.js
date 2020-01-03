@@ -100,7 +100,7 @@ const playAnimation = type => {
   //
   // PETI LEPCSO CONFIG
   const ledekSzamaEgyLepcsonel = 40;
-  const lepcsokSzama = 17;
+  const lepcsokSzama = 10;
   const lepcsoLedek = [];
   let ledLepcsoId = 0;
   for (let i = 0; i < lepcsokSzama; i += 1) {
