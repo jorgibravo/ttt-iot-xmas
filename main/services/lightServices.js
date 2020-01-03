@@ -25,13 +25,6 @@ let continousAnimation = true; // If the animation should end after first run, o
 //
 // MOTION
 const pir = new gpio(12, 'in', 'both');
-pir.watch((err, value) => {
-  if (value === 1) {
-    console.log('Intruder alert');
-  } else {
-    console.log('Intruder gone');
-  }
-});
 //
 // _____________________________________________________________________________
 //  _____ ____  _      ____   _____       _    _ _______ _____ _       _____
@@ -287,6 +280,17 @@ const setLightSpeed = speed => {
   throw new Error('Not a valid speed');
 };
 //
+//
+// PIR WATCHER
+pir.watch((err, value) => {
+  if (value === 1) {
+    console.log('Intruder alert');
+    setLightMode('lepcso');
+  } else {
+    console.log('Intruder gone');
+    setLightMode('off');
+  }
+});
 // Reset the LED Strip on Ctrl + C
 process.on('SIGINT', () => {
   ws281x.reset();
