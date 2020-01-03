@@ -98,7 +98,22 @@ const playAnimation = type => {
   let animationToReturn = null;
   const pixelData = new Uint32Array(NUM_LEDS);
   //
+  // PETI LEPCSO CONFIG
+  const ledekSzamaEgyLepcsonel = 2;
+  const lepcsokSzama = 2;
+  const lepcsoLedek = [];
+  let ledLepcsoId = 0;
+  for (let i = 0; i < lepcsokSzama; i += 1) {
+    lepcsoLedek[i] = [];
+    for (let j = 0; j < ledekSzamaEgyLepcsonel; j += 1) {
+      lepcsoLedek[i].push(ledLepcsoId);
+      ledLepcsoId += 1;
+    }
+  }
+  console.info('lepcsoLedek:', lepcsoLedek);
+  //
   let offset = 0;
+  const lepcsoColor = rgb2Int(255, 255, 255);
   const color = type === 'red' ? rgb2Int(255, 0, 0) : rgb2Int(0, 255, 0);
   //
   switch (type) {
@@ -158,11 +173,16 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
-        for (let i = 0; i < NUM_LEDS; i += 1) {
-          pixelData[i] = rgb2Int(255, 255, 255);
+        for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
+          const ledekEzenALepcson = lepcsoLedek[ledId];
+          // pixelData[i] = rgb2Int(127, 0, 0);
+          console.info('ledekEzenALepcson:', ledekEzenALepcson);
         }
+        pixelData[ledId] = lepcsoColor;
         ws281x.render(pixelData);
-        increment();
+        if (ledId + 1 < NUM_LEDS) {
+          increment();
+        }
       }, ledSpeed);
       break;
     default:
