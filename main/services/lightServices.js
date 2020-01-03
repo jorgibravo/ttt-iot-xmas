@@ -208,7 +208,7 @@ const playAnimation = type => {
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
               console.info('ezALepcso:', ezALepcso);
-              pixelData[ezALepcso] = lepcsoColor;
+              pixelData[ezALepcso] = rgb2Int(0, 0, 0);
             }
           }
           ws281x.render(pixelData);
