@@ -23,7 +23,27 @@ let direction = 'FORWARD'; // Direction of the Loop
 let animacioLepesId = 0; // Loop step id
 let continousAnimation = true; // If the animation should end after first run, or keep going
 //
-// MOTION
+//  _    ___ ___  ___ ___  ___     ___ ___  _  _ ___ ___ ___
+// | |  | __| _ \/ __/ __|/ _ \   / __/ _ \| \| | __|_ _/ __|
+// | |__| _||  _/ (__\__ \ (_) | | (_| (_) | .` | _| | | (_ |
+// |____|___|_|  \___|___/\___/   \___\___/|_|\_|_| |___\___|
+const ledekSzamaEgyLepcsonel = 40;
+const lepcsokSzama = 10;
+const lepcsoLedek = [];
+let ledLepcsoId = 0;
+for (let i = 0; i < lepcsokSzama; i += 1) {
+  lepcsoLedek[i] = [];
+  for (let j = 0; j < ledekSzamaEgyLepcsonel; j += 1) {
+    lepcsoLedek[i].push(ledLepcsoId);
+    ledLepcsoId += 1;
+  }
+}
+console.info('lepcsoLedek:', lepcsoLedek.length);
+//
+//  __  __  ___ _____ ___ ___  _  _    ___ ___  _  _ ___ ___ ___
+// |  \/  |/ _ \_   _|_ _/ _ \| \| |  / __/ _ \| \| | __|_ _/ __|
+// | |\/| | (_) || |  | | (_) | .` | | (_| (_) | .` | _| | | (_ |
+// |_|  |_|\___/ |_| |___\___/|_|\_|  \___\___/|_|\_|_| |___\___|
 const pir = new gpio(12, 'in', 'both');
 //
 // _____________________________________________________________________________
@@ -102,20 +122,6 @@ const playAnimation = type => {
   let animationToReturn = null;
   const pixelData = new Uint32Array(NUM_LEDS);
   //
-  // PETI LEPCSO CONFIG
-  const ledekSzamaEgyLepcsonel = 40;
-  const lepcsokSzama = 10;
-  const lepcsoLedek = [];
-  let ledLepcsoId = 0;
-  for (let i = 0; i < lepcsokSzama; i += 1) {
-    lepcsoLedek[i] = [];
-    for (let j = 0; j < ledekSzamaEgyLepcsonel; j += 1) {
-      lepcsoLedek[i].push(ledLepcsoId);
-      ledLepcsoId += 1;
-    }
-  }
-  console.info('lepcsoLedek:', lepcsoLedek);
-  //
   let offset = 0;
   const lepcsoColor = rgb2Int(125, 125, 125);
   const color = type === 'red' ? rgb2Int(255, 0, 0) : rgb2Int(0, 255, 0);
@@ -177,15 +183,11 @@ const playAnimation = type => {
     case 'lepcso':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
-        // console.info('animacioLepesId:', animacioLepesId);
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
-          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-            // pixelData[i] = rgb2Int(127, 0, 0);
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
-              // console.info('ezALepcso:', ezALepcso);
               pixelData[ezALepcso] = lepcsoColor;
             }
           }
@@ -198,25 +200,23 @@ const playAnimation = type => {
       break;
     case 'lepcsole':
       continousAnimation = false;
+      animacioLepesId = lepcsokSzama;
       animationToReturn = setInterval(() => {
-        animacioLepesId = NUM_LEDS;
         console.info('animacioLepesId:', animacioLepesId);
         console.info('lepcsokSzama:', lepcsokSzama);
-        if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
-          const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
-          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
-          for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-            // pixelData[i] = rgb2Int(127, 0, 0);
-            if (ledekEzenALepcson) {
-              const ezALepcso = ledekEzenALepcson[i];
-              // console.info('ezALepcso:', ezALepcso);
-              pixelData[ezALepcso] = rgb2Int(0, 0, 0);
-            }
+        const ledekEzenALepcson = lepcsoLedek[animacioLepesId - 1];
+        // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+        for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
+          // pixelData[i] = rgb2Int(127, 0, 0);
+          if (ledekEzenALepcson) {
+            const ezALepcso = ledekEzenALepcson[i];
+            // console.info('ezALepcso:', ezALepcso);
+            pixelData[ezALepcso] = rgb2Int(0, 0, 0);
           }
-          ws281x.render(pixelData);
-          if (animacioLepesId + 1 <= lepcsokSzama) {
-            increment();
-          }
+        }
+        ws281x.render(pixelData);
+        if (animacioLepesId + 1 <= lepcsokSzama) {
+          increment();
         }
       }, ledSpeed);
       break;
@@ -308,7 +308,6 @@ const setLightSpeed = speed => {
   }
   throw new Error('Not a valid speed');
 };
-//
 //
 // PIR WATCHER
 pir.watch((err, value) => {
