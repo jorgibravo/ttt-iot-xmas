@@ -169,12 +169,12 @@ const playAnimation = type => {
     case 'lepcsofellentrol':
     case 'lepcsolelentrol':
       continousAnimation = false;
-      console.info('animacioLepesId at start:', animacioLepesId);
+      // console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
-          console.info('animacioLepesId:', animacioLepesId);
+          // console.info('animacioLepesId:', animacioLepesId);
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
-          console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
@@ -188,25 +188,27 @@ const playAnimation = type => {
         }
       }, ledSpeed);
       break;
-    case 'lepcsole':
+    case 'lepcsofelfentrol':
+    case 'lepcsolefentrol':
       continousAnimation = false;
-      animacioLepesId = lepcsokSzama;
+      console.info('lepcsoColor:', lepcsoColor);
+      console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
-        console.info('animacioLepesId:', animacioLepesId);
-        console.info('lepcsokSzama:', lepcsokSzama);
-        const ledekEzenALepcson = lepcsoLedek[animacioLepesId - 1];
-        // console.info('ledekEzenALepcson:', ledekEzenALepcson);
-        for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-          // pixelData[i] = lightFunctions.rgb2Int(127, 0, 0);
-          if (ledekEzenALepcson) {
-            const ezALepcso = ledekEzenALepcson[i];
-            // console.info('ezALepcso:', ezALepcso);
-            pixelData[ezALepcso] = lightFunctions.rgb2Int(0, 0, 0);
+        if (animacioLepesId < lepcsokSzama) {
+          console.info('animacioLepesId:', animacioLepesId);
+          console.info('lepcsoid:', lepcsokSzama - animacioLepesId);
+          const ledekEzenALepcson = lepcsoLedek[lepcsokSzama - animacioLepesId];
+          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
+            if (ledekEzenALepcson) {
+              const ezALepcso = ledekEzenALepcson[i];
+              pixelData[ezALepcso] = lepcsoColor;
+            }
           }
-        }
-        ws281x.render(pixelData);
-        if (animacioLepesId + 1 <= lepcsokSzama) {
-          increment();
+          ws281x.render(pixelData);
+          if (animacioLepesId + 1 <= lepcsokSzama) {
+            increment();
+          }
         }
       }, ledSpeed);
       break;
@@ -248,10 +250,6 @@ const setLightMode = type => {
       animationName = type;
       break;
     case 'lepcsofelfentrol':
-      direction = 'REVERSE';
-      activeAnimation = playAnimation(type);
-      animationName = type;
-      break;
     case 'lepcsolefentrol':
       direction = 'REVERSE';
       activeAnimation = playAnimation(type);
