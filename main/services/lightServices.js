@@ -10,19 +10,6 @@ const gpio = require('onoff').Gpio;
 // \_____\____/ |_| \_|_|    |_____\_____|
 // _____________________________________________________________________________
 //
-let ledSpeed = 200; // The speed of the animation
-let actionCounter = 0;
-const ledNumberArgument = process.argv[2] && parseInt(process.argv[2], 10);
-let NUM_LEDS = Number.isInteger(ledNumberArgument) || 4; // Number of LEDs on the LED Strip
-if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
-  NUM_LEDS = parseInt(process.argv[2], 10);
-}
-let activeAnimation = null; // The Current / Default animation as a <Timeout>
-let animationName = 'off';
-let direction = 'FORWARD'; // Direction of the Loop
-let animacioLepesId = 0; // Loop step id
-let continousAnimation = true; // If the animation should end after first run, or keep going
-//
 //  _    ___ ___  ___ ___  ___     ___ ___  _  _ ___ ___ ___
 // | |  | __| _ \/ __/ __|/ _ \   / __/ _ \| \| | __|_ _/ __|
 // | |__| _||  _/ (__\__ \ (_) | | (_| (_) | .` | _| | | (_ |
@@ -46,6 +33,19 @@ console.info('lepcsoLedek:', lepcsoLedek.length);
 // |_|  |_|\___/ |_| |___\___/|_|\_|  \___\___/|_|\_|_| |___\___|
 const pir = new gpio(12, 'in', 'both');
 //
+let ledSpeed = 200; // The speed of the animation
+let actionCounter = 0;
+const ledNumberArgument = process.argv[2] && parseInt(process.argv[2], 10);
+let NUM_LEDS = Number.isInteger(ledNumberArgument) || lepcsokSzama * ledekSzamaEgyLepcsonel; // Number of LEDs on the LED Strip
+if (process.argv[2] !== undefined && Number.isInteger(parseInt(process.argv[2], 10))) {
+  NUM_LEDS = parseInt(process.argv[2], 10);
+}
+let activeAnimation = null; // The Current / Default animation as a <Timeout>
+let animationName = 'off';
+let direction = 'FORWARD'; // Direction of the Loop
+let animacioLepesId = 0; // Loop step id
+let continousAnimation = true; // If the animation should end after first run, or keep going
+
 // _____________________________________________________________________________
 //  _____ ____  _      ____   _____       _    _ _______ _____ _       _____
 // / ____/ __ \| |    / __ \ |  __ \     | |  | |__   __|_   _| |     / ____|
@@ -184,7 +184,7 @@ const playAnimation = type => {
       continousAnimation = false;
       console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
-        if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
+        if (animacioLepesId <= lepcsokSzama) {
           console.info('animacioLepesId:', animacioLepesId);
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
           console.info('ledekEzenALepcson:', ledekEzenALepcson);
