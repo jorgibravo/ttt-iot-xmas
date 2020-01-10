@@ -194,7 +194,7 @@ const playAnimation = type => {
       console.info('lepcsoColor:', lepcsoColor);
       console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
-        if (animacioLepesId <= lepcsokSzama) {
+        if (animacioLepesId < lepcsokSzama) {
           console.info('animacioLepesId:', animacioLepesId);
           console.info('lepcsoid:', lepcsokSzama - animacioLepesId);
           const ledekEzenALepcson = lepcsoLedek[lepcsokSzama - animacioLepesId];
