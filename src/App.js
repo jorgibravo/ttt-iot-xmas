@@ -90,7 +90,10 @@ class App extends Component {
                     <option value="scanner">scanner</option>
                     <option value="red">red</option>
                     <option value="green">green</option>
-                    <option value="lepcso">lepcso</option>
+                    <option value="lepcsofellentrol">lepcsofelfentrol</option>
+                    <option value="lepcsofelfentrol">lepcsofellentrol</option>
+                    <option value="lepcsolelentrol">lepcsolefentrol</option>
+                    <option value="lepcsolefentrol">lepcsolelentrol</option>
                   </NativeSelect>
                 </FormControl>
               </CardContent>

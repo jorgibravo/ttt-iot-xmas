@@ -180,7 +180,7 @@ const playAnimation = type => {
       }, ledSpeed);
       //
       break;
-    case 'lepcso':
+    case 'lepcsofellentrol':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
@@ -246,7 +246,8 @@ const setLightMode = type => {
     case 'scanner':
     case 'chase':
     case 'red':
-    case 'lepcso':
+    case 'lepcsofellentrol':
+    case 'lepcsolelentrol':
     case 'green':
       direction = 'FORWARD';
       if (animationName !== 'off') {
@@ -256,7 +257,12 @@ const setLightMode = type => {
       activeAnimation = playAnimation(type);
       animationName = type;
       break;
-    case 'lepcsole':
+    case 'lepcsofelfentrol':
+      direction = 'REVERSE';
+      activeAnimation = playAnimation(type);
+      animationName = type;
+      break;
+    case 'lepcsolefentrol':
       direction = 'REVERSE';
       activeAnimation = playAnimation(type);
       animationName = type;
