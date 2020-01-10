@@ -196,7 +196,7 @@ const playAnimation = type => {
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
           console.info('animacioLepesId:', animacioLepesId);
-          const lepcsoid = lepcsokSzama - animacioLepesId + 1;
+          const lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           console.info('lepcsoid:', lepcsoid);
           const ledekEzenALepcson = lepcsoLedek[lepcsoid];
           console.info('ledekEzenALepcson:', ledekEzenALepcson);
