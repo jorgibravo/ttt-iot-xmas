@@ -240,18 +240,14 @@ const setLightMode = type => {
     case 'red':
     case 'lepcsofellentrol':
     case 'lepcsolelentrol':
+    case 'lepcsofelfentrol':
+    case 'lepcsolefentrol':
     case 'green':
       direction = 'FORWARD';
       if (animationName !== 'off') {
         clearInterval(activeAnimation);
         ws281x.reset();
       }
-      activeAnimation = playAnimation(type);
-      animationName = type;
-      break;
-    case 'lepcsofelfentrol':
-    case 'lepcsolefentrol':
-      direction = 'REVERSE';
       activeAnimation = playAnimation(type);
       animationName = type;
       break;
