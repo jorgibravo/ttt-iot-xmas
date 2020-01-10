@@ -91,7 +91,7 @@ const colorwheel = pos => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  // console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
+  console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
   if (direction === 'FORWARD') {
     if (animacioLepesId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
@@ -182,9 +182,12 @@ const playAnimation = type => {
       break;
     case 'lepcsofellentrol':
       continousAnimation = false;
+      console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama * ledekSzamaEgyLepcsonel) {
+          console.info('animacioLepesId:', animacioLepesId);
           const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
+          console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
