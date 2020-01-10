@@ -1,7 +1,6 @@
-import * as lightFunctions from './lightFunctions';
-
 const ws281x = require('rpi-ws281x-native');
 const gpio = require('onoff').Gpio;
+const lightFunctions = require('./lightFunctions');
 
 // _____________________________________________________________________________
 //  _____ ____   _   _ ______ _____ _____
