@@ -107,9 +107,14 @@ const playAnimation = type => {
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   let offset = 0;
+  let lepcsoDirection = 'lentrolFel';
   if (type === 'lepcsolelentrol' || 'lepcsolefentrol') {
     lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
   }
+  if (type === 'lepcsolefentrol' || 'lepcsofelfentrol') {
+    lepcsoDirection = 'fentrolle';
+  }
+  //
   const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
   //
   switch (type) {
@@ -168,38 +173,21 @@ const playAnimation = type => {
       break;
     case 'lepcsofellentrol':
     case 'lepcsolelentrol':
+    case 'lepcsofelfentrol':
+    case 'lepcsolefentrol':
       continousAnimation = false;
       // console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
           // console.info('animacioLepesId:', animacioLepesId);
-          const ledekEzenALepcson = lepcsoLedek[animacioLepesId];
-          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
-          for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-            if (ledekEzenALepcson) {
-              const ezALepcso = ledekEzenALepcson[i];
-              pixelData[ezALepcso] = lepcsoColor;
-            }
+          let lepcsoid = animacioLepesId;
+          if (type === 'lepcsolefentrol' || 'lepcsofelfentrol') {
+            lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           }
-          ws281x.render(pixelData);
-          if (animacioLepesId + 1 <= lepcsokSzama) {
-            increment();
-          }
-        }
-      }, ledSpeed);
-      break;
-    case 'lepcsofelfentrol':
-    case 'lepcsolefentrol':
-      continousAnimation = false;
-      console.info('lepcsoColor:', lepcsoColor);
-      console.info('animacioLepesId at start:', animacioLepesId);
-      animationToReturn = setInterval(() => {
-        if (animacioLepesId < lepcsokSzama) {
-          console.info('animacioLepesId:', animacioLepesId);
-          const lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           console.info('lepcsoid:', lepcsoid);
           const ledekEzenALepcson = lepcsoLedek[lepcsoid];
           console.info('ledekEzenALepcson:', ledekEzenALepcson);
+
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
               const ezALepcso = ledekEzenALepcson[i];
