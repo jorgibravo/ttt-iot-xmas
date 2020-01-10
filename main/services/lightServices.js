@@ -197,7 +197,7 @@ const playAnimation = type => {
         if (animacioLepesId < lepcsokSzama) {
           console.info('animacioLepesId:', animacioLepesId);
           console.info('lepcsoid:', lepcsokSzama - animacioLepesId);
-          const ledekEzenALepcson = lepcsoLedek[lepcsokSzama - animacioLepesId];
+          const ledekEzenALepcson = lepcsoLedek[lepcsokSzama - animacioLepesId + 1];
           console.info('ledekEzenALepcson:', ledekEzenALepcson);
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
