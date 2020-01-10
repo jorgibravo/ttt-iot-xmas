@@ -178,7 +178,7 @@ const playAnimation = type => {
           console.info('animacioLepesId:', animacioLepesId);
           let lepcsoid = animacioLepesId;
           console.info('type:', type);
-          if (type === 'lepcsolefentrol' || 'lepcsofelfentrol') {
+          if (type === 'lepcsolefentrol' || type === 'lepcsofelfentrol') {
             lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           }
           console.info('lepcsoid:', lepcsoid);
