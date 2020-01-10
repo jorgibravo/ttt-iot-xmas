@@ -1,3 +1,5 @@
+import * as lightFunctions from './lightFunctions';
+
 const ws281x = require('rpi-ws281x-native');
 const gpio = require('onoff').Gpio;
 
@@ -17,6 +19,7 @@ const gpio = require('onoff').Gpio;
 const ledekSzamaEgyLepcsonel = 40;
 const lepcsokSzama = 10;
 const lepcsoLedek = [];
+let lepcsoColor = lightFunctions.lightFunctions.rgb2Int(125, 125, 125);
 let ledLepcsoId = 0;
 for (let i = 0; i < lepcsokSzama; i += 1) {
   lepcsoLedek[i] = [];
@@ -60,25 +63,7 @@ const initLEDs = numberOfLEds => {
   console.log(` - Initialized ws281x with ${NUM_LEDS} LEDs`);
   ws281x.init(numberOfLEds);
 };
-//
-// Convert an array of 3 numbers between 0-255 to a single Int that the ws281x can handle
-const rgb2Int = (r, g, b) => ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff); // eslint-disable-line
-//
-// rainbow-colors, taken from http://goo.gl/Cs3H0v
-const colorwheel = pos => {
-  pos = 255 - pos;
-  let colorToReturn = null;
-  if (pos < 85) {
-    colorToReturn = rgb2Int(255 - pos * 3, 0, pos * 3);
-  } else if (pos < 170) {
-    pos -= 85;
-    colorToReturn = rgb2Int(0, pos * 3, 255 - pos * 3);
-  } else {
-    pos -= 170;
-    colorToReturn = rgb2Int(pos * 3, 255 - pos * 3, 0);
-  }
-  return colorToReturn;
-};
+
 //
 // _____________________________________________________________________________
 //      _        _ _____ __  __       _______ _____ ____  _   _
@@ -123,15 +108,17 @@ const playAnimation = type => {
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   let offset = 0;
-  const lepcsoColor = rgb2Int(125, 125, 125);
-  const color = type === 'red' ? rgb2Int(255, 0, 0) : rgb2Int(0, 255, 0);
+  if (type === 'lepcsolelentrol' || 'lepcsolefentrol') {
+    lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
+  }
+  const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
   //
   switch (type) {
     case 'rainbow':
       continousAnimation = true;
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
-          pixelData[i] = colorwheel((offset + i) % 256);
+          pixelData[i] = lightFunctions.colorwheel((offset + i) % 256);
         }
         //
         offset = (offset + 1) % 256;
@@ -143,11 +130,11 @@ const playAnimation = type => {
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
           if (i === animacioLepesId) {
-            pixelData[i] = rgb2Int(255, 0, 0);
+            pixelData[i] = lightFunctions.rgb2Int(255, 0, 0);
           } else if ((direction === 'FORWARD' && i === animacioLepesId - 1) || (direction === 'REVERSE' && i === animacioLepesId + 1)) {
-            pixelData[i] = rgb2Int(255, 0, 0);
+            pixelData[i] = lightFunctions.rgb2Int(255, 0, 0);
           } else {
-            pixelData[i] = rgb2Int(0, 0, 0);
+            pixelData[i] = lightFunctions.rgb2Int(0, 0, 0);
           }
         }
         ws281x.render(pixelData);
@@ -159,9 +146,9 @@ const playAnimation = type => {
       animationToReturn = setInterval(() => {
         for (let i = 0; i < NUM_LEDS; i += 1) {
           if ((i + animacioLepesId) % 2 === 0) {
-            pixelData[i] = rgb2Int(127, 0, 0);
+            pixelData[i] = lightFunctions.rgb2Int(127, 0, 0);
           } else {
-            pixelData[i] = rgb2Int(0, 127, 0);
+            pixelData[i] = lightFunctions.rgb2Int(0, 127, 0);
           }
         }
         ws281x.render(pixelData);
@@ -181,6 +168,7 @@ const playAnimation = type => {
       //
       break;
     case 'lepcsofellentrol':
+    case 'lepcsolelentrol':
       continousAnimation = false;
       console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
@@ -210,11 +198,11 @@ const playAnimation = type => {
         const ledekEzenALepcson = lepcsoLedek[animacioLepesId - 1];
         // console.info('ledekEzenALepcson:', ledekEzenALepcson);
         for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
-          // pixelData[i] = rgb2Int(127, 0, 0);
+          // pixelData[i] = lightFunctions.rgb2Int(127, 0, 0);
           if (ledekEzenALepcson) {
             const ezALepcso = ledekEzenALepcson[i];
             // console.info('ezALepcso:', ezALepcso);
-            pixelData[ezALepcso] = rgb2Int(0, 0, 0);
+            pixelData[ezALepcso] = lightFunctions.rgb2Int(0, 0, 0);
           }
         }
         ws281x.render(pixelData);
