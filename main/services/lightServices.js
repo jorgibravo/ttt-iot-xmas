@@ -107,12 +107,8 @@ const playAnimation = type => {
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   let offset = 0;
-  let lepcsoDirection = 'lentrolFel';
   if (type === 'lepcsolelentrol' || 'lepcsolefentrol') {
     lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
-  }
-  if (type === 'lepcsolefentrol' || 'lepcsofelfentrol') {
-    lepcsoDirection = 'fentrolle';
   }
   //
   const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
@@ -179,8 +175,9 @@ const playAnimation = type => {
       // console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
-          // console.info('animacioLepesId:', animacioLepesId);
+          console.info('animacioLepesId:', animacioLepesId);
           let lepcsoid = animacioLepesId;
+          console.info('type:', type);
           if (type === 'lepcsolefentrol' || 'lepcsofelfentrol') {
             lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           }
