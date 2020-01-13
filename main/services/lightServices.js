@@ -75,7 +75,7 @@ const initLEDs = numberOfLEds => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
+  // console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
   if (direction === 'FORWARD') {
     if (animacioLepesId === NUM_LEDS - 1) {
       if (continousAnimation === true) {

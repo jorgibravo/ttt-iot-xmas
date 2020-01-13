@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { DepthOfFieldSnowfall } from 'react-snowflakes';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Card from '@material-ui/core/Card';
@@ -52,28 +51,14 @@ class App extends Component {
         <AppBar className="ttt-header" position="static">
           <Toolbar>
             <Typography className="ttt-title" variant="h6">
-              <span>Thursday Tech Talk</span>
+              <span>Smart stairs config</span>
               <div className="ttt-emoHolder">
-                <span role="img" aria-label="Chrismtas Tree">
-                  🎄
-                </span>
-                <span className="ttt-subtitle">Xmas IOT LED Lights</span>
-                <span role="img" aria-label="Chrismtas Tree">
-                  🎄
-                </span>
+                <span className="ttt-subtitle">LED strips</span>
               </div>
             </Typography>
           </Toolbar>
         </AppBar>
         <div className="body-container">
-          <DepthOfFieldSnowfall
-            count={50}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-            }}
-          />
           <div className="ttt-formContainer">
             <Card className="ttt-card">
               <CardContent className="ttt-cardContent">
@@ -123,7 +108,7 @@ class App extends Component {
         <AppBar className="ttt-footer" position="static">
           <Toolbar>
             <Typography className="ttt-title" variant="h6">
-              Black Swan Budapest 2018
+              Budapest 2020
             </Typography>
           </Toolbar>
         </AppBar>
