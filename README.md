@@ -51,40 +51,40 @@ Oprendszer+alapbeállítások
 - ssh pi@192.168.1.xxx 	//Távoli kapcsolódás terminálból
 
 Programok telepítése
-sudo apt-get update	 //alap command készletet frissíti
-sudo curl -o- -L https://yarnpkg.com/install.sh | bash 		//felrakja a Yarn környezetet
-yarn upgrade--latest 	//frissíti a yarn környezetet a legfrissebbre
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash //??
-nvm install --lts 	//felrakja az NVM környezetet
-sudo apt install git-all  //Githez szükséges parancs környezetet rakja fel
+- sudo apt-get update	 //alap command készletet frissíti
+- sudo curl -o- -L https://yarnpkg.com/install.sh | bash 		//felrakja a Yarn környezetet
+- yarn upgrade--latest 	//frissíti a yarn környezetet a legfrissebbre
+- curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash //??
+- nvm install --lts 	//felrakja az NVM környezetet
+- sudo apt install git-all  //Githez szükséges parancs környezetet rakja fel
 
 Verziók lekérdezése
-yarn -v  
-nvm -v
-npm -v
-node -v
+- yarn -v  
+- nvm -v
+- npm -v
+- node -v
 
 Mappa létrhozás és feltöltés és git clone-al
-mkdir Development		//Csinál egy Development mappát
-cd Development	//belép a Development mappába
+- mkdir Development		//Csinál egy Development mappát
+- cd Development	//belép a Development mappába
 
 Git parancsok
-git clone https://github.com/jorgibravo/ttt-iot-xmas.git	//lemásolja Githubrol a repot
-git branch	//melyik branchben vagyok
-git pull	//frissiti a branch tartalmát
-git checkout peti	//átvált a Peti branchre
+- git clone https://github.com/jorgibravo/ttt-iot-xmas.git	//lemásolja Githubrol a repot
+- git branch	//melyik branchben vagyok
+- git pull	//frissiti a branch tartalmát
+- git checkout peti	//átvált a Peti branchre
 
 Futtatás
-cd Development	//ha nem ott vagyok akkor belép a developmentbe
-cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
-yarn install
-yarn build
-yarn start
-sudo node ./main/index.js
+- cd Development	//ha nem ott vagyok akkor belép a developmentbe
+- cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
+- yarn install
+- yarn build
+- yarn start
+- sudo node ./main/index.js
 
 Github commit
-Cerzuzával edit
-Alul commit gomb
+- Cerzuzával edit
+- Alul commit gomb
 
 
 > Each step is separated into different branches, if you would like to follow the progress, you can start by checking out the first branch in numeric order. Each branch has it's own GUIDE.md to explain the details.
