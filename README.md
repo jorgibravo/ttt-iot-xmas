@@ -43,12 +43,12 @@ The purpose of this demonstration is to showcase an example project that can be 
 Raspberry install
 
 Oprendszer+alapbeállítások
-https://www.raspberrypi.org/downloads/	//Raspberry os lite gui nélkül 
-https://www.youtube.com/watch?v=y5SOuBOy2ZQ
-Jelszó változtatás
-Név változtatás
-SSH engedélyezés
-ssh pi@192.168.1.xxx 	//Távoli kapcsolódás terminálból
+- https://www.raspberrypi.org/downloads/	//Raspberry os lite gui nélkül 
+- https://www.youtube.com/watch?v=y5SOuBOy2ZQ
+- Jelszó változtatás
+- Név változtatás
+- SSH engedélyezés
+- ssh pi@192.168.1.xxx 	//Távoli kapcsolódás terminálból
 
 Programok telepítése
 sudo apt-get update	 //alap command készletet frissíti
