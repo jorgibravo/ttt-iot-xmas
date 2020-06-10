@@ -1,6 +1,4 @@
-# BLACK SWAN BUDAPEST
-# THURSDAY TECH TALK (TTT)
-### IOT Xmas LEDs
+# Peti lépcső
 ---
 
 ## DESCRIPTION
