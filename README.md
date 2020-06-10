@@ -40,9 +40,9 @@ The purpose of this demonstration is to showcase an example project that can be 
 ## HOW TO GET STARTED
 ### Step-By-Step on computer
 
-###Raspberry install
+Raspberry install
 
-###Oprendszer+alapbeállítások
+Oprendszer+alapbeállítások
 https://www.raspberrypi.org/downloads/	//Raspberry os lite gui nélkül 
 https://www.youtube.com/watch?v=y5SOuBOy2ZQ
 Jelszó változtatás
@@ -50,7 +50,7 @@ Név változtatás
 SSH engedélyezés
 ssh pi@192.168.1.xxx 	//Távoli kapcsolódás terminálból
 
-###Programok telepítése
+Programok telepítése
 sudo apt-get update	 //alap command készletet frissíti
 sudo curl -o- -L https://yarnpkg.com/install.sh | bash 		//felrakja a Yarn környezetet
 yarn upgrade--latest 	//frissíti a yarn környezetet a legfrissebbre
@@ -58,23 +58,23 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | b
 nvm install --lts 	//felrakja az NVM környezetet
 sudo apt install git-all  //Githez szükséges parancs környezetet rakja fel
 
-###Verziók lekérdezése
+Verziók lekérdezése
 yarn -v  
 nvm -v
 npm -v
 node -v
 
-###Mappa létrhozás és feltöltés és git clone-al
+Mappa létrhozás és feltöltés és git clone-al
 mkdir Development		//Csinál egy Development mappát
 cd Development	//belép a Development mappába
 
-###Git parancsok
+Git parancsok
 git clone https://github.com/jorgibravo/ttt-iot-xmas.git	//lemásolja Githubrol a repot
 git branch	//melyik branchben vagyok
 git pull	//frissiti a branch tartalmát
 git checkout peti	//átvált a Peti branchre
 
-###Futtatás
+Futtatás
 cd Development	//ha nem ott vagyok akkor belép a developmentbe
 cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
 yarn install
@@ -85,14 +85,6 @@ sudo node ./main/index.js
 Github commit
 Cerzuzával edit
 Alul commit gomb
-
-
-
-
-
-
-
-
 
 
 > Each step is separated into different branches, if you would like to follow the progress, you can start by checking out the first branch in numeric order. Each branch has it's own GUIDE.md to explain the details.
