@@ -33,7 +33,9 @@ console.info('lepcsoLedek:', lepcsoLedek.length);
 // |  \/  |/ _ \_   _|_ _/ _ \| \| |  / __/ _ \| \| | __|_ _/ __|
 // | |\/| | (_) || |  | | (_) | .` | | (_| (_) | .` | _| | | (_ |
 // |_|  |_|\___/ |_| |___\___/|_|\_|  \___\___/|_|\_|_| |___\___|
-const pir = new gpio(12, 'in', 'both');
+const pirlenn = new gpio(12, 'in', 'both');
+const pirfenn = new gpio(13, 'in', 'both');
+
 //
 let ledSpeed = 200; // The speed of the animation
 let actionCounter = 0;
@@ -286,15 +288,25 @@ const setLightSpeed = speed => {
 };
 //
 // PIR WATCHER
-pir.watch((err, value) => {
-  if (value === 1) {
+pirlenn.watch((err, value) => {
+  if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
     setLightMode('lepcso');
-  } else {
+  } else if (animationName === 'lepcso') {
     console.log('Intruder gone');
-    setLightMode('lepcsole');
+    setLightMode('lepcsolefentrol');
   }
 });
+pirfenn.watch((err, value) => {
+  if (value === 1 && animationName === 'off') {
+    console.log('Intruder alert');
+    setLightMode('lepcsofellentrol');
+  } else if (animationName === 'lepcso') {
+    console.log('Intruder gone');
+    setLightMode('lepcsolelentrol');
+  }
+});
+
 // Reset the LED Strip on Ctrl + C
 process.on('SIGINT', () => {
   ws281x.reset();
