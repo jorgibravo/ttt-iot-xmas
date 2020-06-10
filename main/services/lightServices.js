@@ -15,8 +15,8 @@ const lightFunctions = require('./lightFunctions');
 // | |  | __| _ \/ __/ __|/ _ \   / __/ _ \| \| | __|_ _/ __|
 // | |__| _||  _/ (__\__ \ (_) | | (_| (_) | .` | _| | | (_ |
 // |____|___|_|  \___|___/\___/   \___\___/|_|\_|_| |___\___|
-const ledekSzamaEgyLepcsonel = 40;
-const lepcsokSzama = 10;
+const ledekSzamaEgyLepcsonel = 42;
+const lepcsokSzama = 16;
 const lepcsoLedek = [];
 let lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
 let ledLepcsoId = 0;
