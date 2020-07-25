@@ -18,7 +18,7 @@ const lightFunctions = require('./lightFunctions');
 const ledekSzamaEgyLepcsonel = 42;
 const lepcsokSzama = 16;
 const lepcsoLedek = [];
-let lepcsoColor = lightFunctions.rgb2Int(255, 255, 255);
+let lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
 let ledLepcsoId = 0;
 for (let i = 0; i < lepcsokSzama; i += 1) {
   lepcsoLedek[i] = [];
