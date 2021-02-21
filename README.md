@@ -75,10 +75,16 @@ Git parancsok
 Futtatás
 - cd Development	//ha nem ott vagyok akkor belép a developmentbe
 - cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
+- sudo node Development/ttt-iot-xmas/main/index.js -d //egyből a mappából indítja
 - yarn install
 - yarn build
 - yarn start
 - sudo node ./main/index.js
+
+Startupkor indítás
+- crontab -e //elindítja az ütenetés szerkesztőt
+- @reboot sudo /usr/local/bin/node Development/ttt-iot-xmas/main/index.js & //ez indítja el
+- ctrl x//kilépés, mentés
 
 Github commit
 - Cerzuzával edit
