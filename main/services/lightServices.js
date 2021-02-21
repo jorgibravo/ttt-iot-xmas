@@ -28,6 +28,7 @@ for (let i = 0; i < lepcsokSzama; i += 1) {
   }
 }
 console.info('lepcsoLedek:', lepcsoLedek.length);
+console.log ('lepcsoLedek:', lepcsoLedek.length);
 //
 //  __  __  ___ _____ ___ ___  _  _    ___ ___  _  _ ___ ___ ___
 // |  \/  |/ _ \_   _|_ _/ _ \| \| |  / __/ _ \| \| | __|_ _/ __|
@@ -77,7 +78,7 @@ const initLEDs = numberOfLEds => {
 //
 // This handles the loop outside of the intervalFunctions
 const increment = () => {
-  // console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
+  console.log('DIRECTION:', direction, 'animacioLepesId:', animacioLepesId);
   if (direction === 'FORWARD') {
     if (animacioLepesId === NUM_LEDS - 1) {
       if (continousAnimation === true) {
@@ -113,7 +114,7 @@ const playAnimation = type => {
     lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
   }
   //
-  const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
+  const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0) : lightFunctions.rgb2Int(0, 0, 255);
   //
   switch (type) {
     case 'rainbow':
@@ -138,6 +139,7 @@ const playAnimation = type => {
           } else {
             pixelData[i] = lightFunctions.rgb2Int(0, 0, 0);
           }
+          console.log('animacioLepesId:', animacioLepesId);
         }
         ws281x.render(pixelData);
         increment();
@@ -152,12 +154,14 @@ const playAnimation = type => {
           } else {
             pixelData[i] = lightFunctions.rgb2Int(0, 127, 0);
           }
+          console.log('animacioLepesId:', animacioLepesId);
         }
         ws281x.render(pixelData);
         increment();
       }, ledSpeed);
       break;
     case 'red':
+    case 'blue':
     case 'green':
       continousAnimation = false;
       animationToReturn = setInterval(() => {
@@ -165,6 +169,7 @@ const playAnimation = type => {
         ws281x.render(pixelData);
         if (animacioLepesId + 1 < NUM_LEDS) {
           increment();
+          console.log('animacioLepesId:', animacioLepesId);
         }
       }, ledSpeed);
       //
@@ -174,18 +179,20 @@ const playAnimation = type => {
     case 'lepcsofelfentrol':
     case 'lepcsolefentrol':
       continousAnimation = false;
-      // console.info('animacioLepesId at start:', animacioLepesId);
+      console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
-          console.info('animacioLepesId:', animacioLepesId);
+          console.log('animacioLepesId: ', animacioLepesId);
+          console.log('lepcsokSzama:', lepcsokSzama);          
           let lepcsoid = animacioLepesId;
 
           if (type === 'lepcsolefentrol' || type === 'lepcsofelfentrol') {
             lepcsoid = lepcsokSzama - (animacioLepesId + 1);
           }
           console.info('lepcsoid:', lepcsoid);
+          console.info('animacioLepesId: ', animacioLepesId);
           const ledekEzenALepcson = lepcsoLedek[lepcsoid];
-          // console.info('ledekEzenALepcson:', ledekEzenALepcson);
+          console.info('ledekEzenALepcson:', ledekEzenALepcson);
 
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
@@ -226,11 +233,12 @@ const setLightMode = type => {
     case 'scanner':
     case 'chase':
     case 'red':
+    case 'blue':
+    case 'green':
     case 'lepcsofellentrol':
     case 'lepcsolelentrol':
     case 'lepcsofelfentrol':
     case 'lepcsolefentrol':
-    case 'green':
       direction = 'FORWARD';
       if (animationName !== 'off') {
         clearInterval(activeAnimation);
@@ -291,7 +299,7 @@ const setLightSpeed = speed => {
 pirlenn.watch((err, value) => {
   if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
-    setLightMode('lepcso');
+    setLightMode('lepcsofellentrol');
   } else if (animationName === 'lepcso') {
     console.log('Intruder gone');
     setLightMode('lepcsolefentrol');
@@ -300,7 +308,7 @@ pirlenn.watch((err, value) => {
 pirfenn.watch((err, value) => {
   if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
-    setLightMode('lepcsofellentrol');
+    setLightMode('lepcsofelfentrol');
   } else if (animationName === 'lepcso') {
     console.log('Intruder gone');
     setLightMode('lepcsolelentrol');
