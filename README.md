@@ -84,7 +84,11 @@ Futtatás
 Startupkor indítás
 - crontab -e //elindítja az ütenetés szerkesztőt
 - @reboot sudo /usr/local/bin/node Development/ttt-iot-xmas/main/index.js & //ez indítja el
+- sudo node Development/ttt-iot-xmas/main/index.js >lepcsolog.txt //ez teszi fileba a logot
 - ctrl x//kilépés, mentés
+
+Txt megnyitása
+vi lepcsolog.txt
 
 Github commit
 - Cerzuzával edit
