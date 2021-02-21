@@ -114,7 +114,7 @@ const playAnimation = type => {
     lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
   }
   //
-  const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0) : lightFunctions.rgb2Int(0, 0, 255);
+  const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
   //
   switch (type) {
     case 'rainbow':
