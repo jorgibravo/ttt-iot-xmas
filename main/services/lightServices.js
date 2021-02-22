@@ -187,8 +187,8 @@ if (type === 'red') {
       continousAnimation = false;
       console.info('lépcsőcolor: ', lepcsoColor);
       console.info('animacioLepesId at start:', animacioLepesId);
-      //ez a for teszi az egészet fehérre
-      if (type === 'lepcsolefentrol' || type === 'lepcsolefentrol') {   
+      //ez a for teszi az egészet fehérre mielőtt lekapcsolna
+      if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {   
             for (let i = 0; i < NUM_LEDS; i += 1) {
                 pixelData[i] = lightFunctions.rgb2Int(125, 125, 125);
                 }
