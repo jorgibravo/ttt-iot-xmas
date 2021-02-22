@@ -207,8 +207,6 @@ if (type === 'red') {
           }
           //
            ws281x.render(pixelData);
-            }
-          }
 
           for (let i = 0; i < ledekSzamaEgyLepcsonel; i += 1) {
             if (ledekEzenALepcson) {
