@@ -247,7 +247,11 @@ const setLightMode = type => {
       clearInterval(activeAnimation);
       activeAnimation = playAnimation(type);
       animationName = type;
+      if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
+      lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
+      } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol'         
       lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
+      }
       break;
     case 'rainbow':
     case 'scanner':
