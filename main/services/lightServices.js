@@ -245,6 +245,13 @@ const setLightMode = type => {
   //
   actionCounter += 1;
   switch (type) {
+    case 'lepcsofellentrol':
+    case 'lepcsolelentrol':
+    case 'lepcsofelfentrol':
+    case 'lepcsolefentrol':
+      activeAnimation = playAnimation(type);
+      animationName = type;
+      break;
     case 'rainbow':
     case 'scanner':
     case 'chase':
@@ -259,18 +266,11 @@ const setLightMode = type => {
       activeAnimation = playAnimation(type);
       animationName = type;
       break;
-   case 'off':
+    case 'off':
       clearInterval(activeAnimation);
       ws281x.reset();
       animationName = type;
-      break;
-   case 'lepcsofellentrol':
-   case 'lepcsolelentrol':
-   case 'lepcsofelfentrol':
-   case 'lepcsolefentrol':
-      activeAnimation = playAnimation(type);
-      animationName = type;
-      break;
+      break;   
     default:
       Error(`This is not a valid option`);
   }
