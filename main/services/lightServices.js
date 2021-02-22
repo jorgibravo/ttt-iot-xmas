@@ -243,6 +243,7 @@ const setLightMode = type => {
     case 'lepcsolefentrol':
       direction = 'FORWARD';
       clearInterval(activeAnimation);
+      activeAnimation = playAnimation(rainbow);
       activeAnimation = playAnimation(type);
       animationName = type;
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
