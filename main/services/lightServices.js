@@ -249,7 +249,7 @@ const setLightMode = type => {
       animationName = type;
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
       lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
-      } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol'         
+      } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol') {        
       lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
       }
       break;
