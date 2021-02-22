@@ -188,11 +188,12 @@ if (type === 'red') {
       console.info('lépcsőcolor: ', lepcsoColor);
       console.info('animacioLepesId at start:', animacioLepesId);
       //ez a for teszi az egészet fehérre
-          for (let i = 0; i < NUM_LEDS; i += 1) {
-          pixelData[i] = lightFunctions.rgb2Int(125, 125, 125);
-          }
-          //
-           ws281x.render(pixelData);
+      if (type === 'lepcsolefentrol' || type === 'lepcsolefentrol') {   
+            for (let i = 0; i < NUM_LEDS; i += 1) {
+                pixelData[i] = lightFunctions.rgb2Int(125, 125, 125);
+                }
+                 ws281x.render(pixelData);
+        }
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
           console.log('animacioLepesId: ', animacioLepesId);
@@ -253,7 +254,7 @@ const setLightMode = type => {
       activeAnimation = playAnimation(type);
       animationName = type;
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
-      lepcsoColor = lightFunctions.rgb2Int(255, 0, 0);      
+      lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);      
       } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol') {        
       lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
       }
