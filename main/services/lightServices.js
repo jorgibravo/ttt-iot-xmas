@@ -100,7 +100,7 @@ const increment = () => {
   } else {
     animacioLepesId -= 1;
   }
-};
+//};
 //
 // This is where we kickoff the animations based on the type
 const playAnimation = type => {
