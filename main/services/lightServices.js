@@ -100,7 +100,7 @@ const increment = () => {
   } else {
     animacioLepesId -= 1;
   }
-//};
+};
 //
 // This is where we kickoff the animations based on the type
 const playAnimation = type => {
@@ -116,7 +116,7 @@ const playAnimation = type => {
   //
   //const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
   //
-         } 
+         //} 
   // Default ertek a red green blue szinekhez, color válotó deklarálás hozzá
 //
 //let color = lightFunctions.rgb2Int(0, 0, 0);
