@@ -110,9 +110,9 @@ const playAnimation = type => {
   const pixelData = new Uint32Array(NUM_LEDS);
   //
   let offset = 0;
-  if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
-    lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
-  }
+// if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
+//    lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
+//  }
 
   // Default ertek a red green blue szinekhez, color válotó deklarálás hozzá
 
@@ -252,6 +252,7 @@ const setLightMode = type => {
       } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol') {        
       lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
       }
+      
       break;
     case 'rainbow':
     case 'scanner':
