@@ -243,7 +243,7 @@ const setLightMode = type => {
     case 'lepcsolefentrol':
       direction = 'FORWARD';
       clearInterval(activeAnimation);
-      activeAnimation = playAnimation('rainbow');
+      activeAnimation = playAnimation('rainbow'); //ide tettem bele ideiglenese
       activeAnimation = playAnimation(type);
       animationName = type;
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
