@@ -251,10 +251,10 @@ const setLightMode = type => {
     case 'red':
     case 'blue':
     case 'green':
-    case 'lepcsofellentrol':
-    case 'lepcsolelentrol':
-    case 'lepcsofelfentrol':
-    case 'lepcsolefentrol':
+   // case 'lepcsofellentrol':
+   // case 'lepcsolelentrol':
+   // case 'lepcsofelfentrol':
+   // case 'lepcsolefentrol':
       direction = 'FORWARD';
       if (animationName !== 'off') {
         clearInterval(activeAnimation);
