@@ -113,14 +113,8 @@ const playAnimation = type => {
   if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
     lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);
   }
-  //
-  //const color = type === 'red' ? lightFunctions.rgb2Int(255, 0, 0) : lightFunctions.rgb2Int(0, 255, 0);
-  //
-         //} 
+
   // Default ertek a red green blue szinekhez, color válotó deklarálás hozzá
-//
-//let color = lightFunctions.rgb2Int(0, 0, 0);
-//const type = 'red';
 
 if (type === 'red') {
    color = lightFunctions.rgb2Int(255, 0, 0);
@@ -253,6 +247,7 @@ const setLightMode = type => {
       clearInterval(activeAnimation);
       activeAnimation = playAnimation(type);
       animationName = type;
+      lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
       break;
     case 'rainbow':
     case 'scanner':
