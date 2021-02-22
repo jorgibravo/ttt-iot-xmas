@@ -122,13 +122,13 @@ const playAnimation = type => {
 //let color = lightFunctions.rgb2Int(0, 0, 0);
 //const type = 'red';
 
-//if (type === 'red') {
-//   color = lightFunctions.rgb2Int(255, 0, 0);
-//} else if (type === 'green') {
-//   color = lightFunctions.rgb2Int(0, 255, 0);
-//} else if (type === 'blue') {
-//   color = lightFunctions.rgb2Int(0, 0, 255);
-//}  
+if (type === 'red') {
+   color = lightFunctions.rgb2Int(255, 0, 0);
+} else if (type === 'green') {
+   color = lightFunctions.rgb2Int(0, 255, 0);
+} else if (type === 'blue') {
+   color = lightFunctions.rgb2Int(0, 0, 255);
+}  
   
   switch (type) {
     case 'rainbow':
