@@ -251,7 +251,6 @@ const setLightMode = type => {
     case 'lepcsolefentrol':
       activeAnimation = playAnimation(type);
       animationName = type;
-      break;
     case 'rainbow':
     case 'scanner':
     case 'chase':
