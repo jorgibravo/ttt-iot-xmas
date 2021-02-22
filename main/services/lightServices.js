@@ -193,7 +193,7 @@ if (type === 'red') {
     case 'lepcsofelfentrol':
     case 'lepcsolefentrol':
       continousAnimation = false;
-      console.info('lépcsőcolor: ', lepcsocolor);
+      console.info('lépcsőcolor: ', lepcsoColor);
       console.info('animacioLepesId at start:', animacioLepesId);
       animationToReturn = setInterval(() => {
         if (animacioLepesId < lepcsokSzama) {
