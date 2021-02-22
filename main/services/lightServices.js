@@ -206,6 +206,7 @@ if (type === 'red') {
           }
           console.info('lepcsoid:', lepcsoid);
           console.info('animacioLepesId: ', animacioLepesId);
+          console.info('lépcsőcolor: ', lepcsoColor);
           const ledekEzenALepcson = lepcsoLedek[lepcsoid];
           console.info('ledekEzenALepcson:', ledekEzenALepcson);
 
