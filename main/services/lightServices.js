@@ -242,12 +242,11 @@ const setLightMode = type => {
     case 'lepcsofelfentrol':
     case 'lepcsolefentrol':
       direction = 'FORWARD';
-     // clearInterval(activeAnimation);
+      clearInterval(activeAnimation);
       activeAnimation = playAnimation(type);
       animationName = type;
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
-      clearInterval(activeAnimation);
-      lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);      
+      lepcsoColor = lightFunctions.rgb2Int(255, 0, 0);      
       } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol') {        
       lepcsoColor = lightFunctions.rgb2Int(125, 125, 125);
       }
