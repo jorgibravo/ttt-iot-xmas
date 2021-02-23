@@ -334,6 +334,7 @@ pirlenn.watch((err, value) => {
   }
 });
 pirfenn.watch((err, value) => {
+  console.log(value)
   if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
     setLightMode('lepcsofelfentrol');
