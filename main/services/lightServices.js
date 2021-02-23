@@ -324,8 +324,13 @@ const setLightSpeed = speed => {
 //
 // PIR WATCHER
 pirlenn.watch((err, value) => {
-  console.log(value)
-  if (value === 1 && animationName === 'off') {
+  if (value === 1) {
+    console.log('PIR akítv: ',value);
+  }   
+    else if (value === 0) {
+      console.warn('PIR nem akítv: ',value);
+  }  
+  if (value === 1 && animationName === 'off'|| animationName === 'lepcsolefentrol') {
     console.log('Intruder alert');
     setLightMode('lepcsofellentrol');
   } else if (animationName === 'lepcsofellentrol') {
