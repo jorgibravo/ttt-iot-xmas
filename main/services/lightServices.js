@@ -328,7 +328,7 @@ pirlenn.watch((err, value) => {
   if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
     setLightMode('lepcsofellentrol');
-  } else if (animationName === 'lepcsolelentrol') {
+  } else if (animationName === 'lepcsofellentrol') {
     console.log('Intruder gone');
     setLightMode('lepcsolefentrol');
   }
@@ -337,7 +337,7 @@ pirfenn.watch((err, value) => {
   if (value === 1 && animationName === 'off') {
     console.log('Intruder alert');
     setLightMode('lepcsofelfentrol');
-  } else if (animationName === 'lepcsolelentrol') {
+  } else if (animationName === 'lepcsofelfentrol') {
     console.log('Intruder gone');
     setLightMode('lepcsolelentrol');
   }
