@@ -334,9 +334,15 @@ pirlenn.watch((err, value) => {
   }
 });
 pirfenn.watch((err, value) => {
-  console.log(value)
-  if (value === 1 && (animationName === 'off' || animationName === 'lepcsofelfentrol') ) {
-    console.log('Intruder alert');
+  if (value === 1) {
+    console.log('PIR akítv: ',value);
+  }   
+    else if (value === 0) {
+      console.warn('PIR nem akítv: ',value);
+  }  
+    
+  if (value === 1 && (animationName === 'off' || animationName === 'lepcsolelentrol') ) {
+    console.info('Intruder alert');
     setLightMode('lepcsofelfentrol');
   } else if (animationName === 'lepcsofelfentrol') {
     console.info('Intruder gone');
