@@ -330,11 +330,11 @@ pirlenn.watch((err, value) => {
     else if (value === 0) {
       console.warn('PIR nem akítv: ',value);
   }  
-  if (value === 1 && animationName === 'off'|| animationName === 'lepcsolefentrol') {
-    console.log('Intruder alert');
+  if (value === 1 && (animationName === 'off'|| animationName === 'lepcsolefentrol') ) {
+    console.log('Alul látok valakit');
     setLightMode('lepcsofellentrol');
   } else if (animationName === 'lepcsofellentrol') {
-    console.log('Intruder gone');
+    console.log('Alulról elment mindenki');
     setLightMode('lepcsolefentrol');
   }
 });
@@ -347,10 +347,10 @@ pirfenn.watch((err, value) => {
   }  
     
   if (value === 1 && (animationName === 'off' || animationName === 'lepcsolelentrol') ) {
-    console.info('Intruder alert');
+    console.info('Fenn látok valakit');
     setLightMode('lepcsofelfentrol');
   } else if (animationName === 'lepcsofelfentrol') {
-    console.info('Intruder gone');
+    console.info('Fenntről elment mindenki');
     setLightMode('lepcsolelentrol');
   }
 });
