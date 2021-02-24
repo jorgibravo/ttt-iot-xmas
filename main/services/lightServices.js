@@ -325,10 +325,10 @@ const setLightSpeed = speed => {
 // PIR WATCHER
 pirlenn.watch((err, value) => {
   if (value === 1) {
-    console.log('PIR akítv: ',value);
+    console.log('PIR lenn akítv: ',value);
   }   
     else if (value === 0) {
-      console.warn('PIR nem akítv: ',value);
+      console.warn('PIR lenn nem akítv: ',value);
   }  
   if (value === 1 && (animationName === 'off'|| animationName === 'lepcsolefentrol') ) {
     console.log('Alul látok valakit');
@@ -340,10 +340,10 @@ pirlenn.watch((err, value) => {
 });
 pirfenn.watch((err, value) => {
   if (value === 1) {
-    console.log('PIR akítv: ',value);
+    console.log('PIR fenn akítv: ',value);
   }   
     else if (value === 0) {
-      console.warn('PIR nem akítv: ',value);
+      console.warn('PIR fenn nem akítv: ',value);
   }  
     
   if (value === 1 && (animationName === 'off' || animationName === 'lepcsolelentrol') ) {
