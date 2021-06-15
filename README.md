@@ -52,7 +52,7 @@ Programok telepítése
 - sudo apt-get update	 //alap command készletet frissíti
 - sudo apt-get upgrade //alap command készletet frissíti
 
-//node installálás
+Node installálás
 - https://www.makersupplies.sg/blogs/tutorials/how-to-install-node-js-and-npm-on-the-raspberry-pi
 - uname -m
 - wget https://nodejs.org/download/release/v11.15.0/node-v11.15.0-linux-armv6l.tar.gz
@@ -63,7 +63,7 @@ Programok telepítése
 - sudo curl -o- -L https://yarnpkg.com/install.sh | bash 		//felrakja a Yarn környezetet
 - yarn upgrade--latest 	//frissíti a yarn környezetet a legfrissebbre
 - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash //??
-- nvm install --lts 	//felrakja az NVM környezetet
+- nvm install --lts 	//felrakja az NVM környezetet, ez órákig tart
 - sudo apt install git-all  //Githez szükséges parancs környezetet rakja fel
 
 Verziók lekérdezése
