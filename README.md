@@ -53,12 +53,12 @@ Programok telepítése
 - sudo apt-get upgrade //alap command készletet frissíti
 
 //node installálás
-https://www.makersupplies.sg/blogs/tutorials/how-to-install-node-js-and-npm-on-the-raspberry-pi
-uname -m
-wget https://nodejs.org/download/release/v11.15.0/node-v11.15.0-linux-armv6l.tar.gz
-tar -xzf node-v11.15.0-linux-armv6l.tar.gz
-cd node-v11.15.0-linux-armv6l/
-sudo cp -R * /usr/local/
+- https://www.makersupplies.sg/blogs/tutorials/how-to-install-node-js-and-npm-on-the-raspberry-pi
+- uname -m
+- wget https://nodejs.org/download/release/v11.15.0/node-v11.15.0-linux-armv6l.tar.gz
+- tar -xzf node-v11.15.0-linux-armv6l.tar.gz
+- cd node-v11.15.0-linux-armv6l/
+- sudo cp -R * /usr/local/
 
 - sudo curl -o- -L https://yarnpkg.com/install.sh | bash 		//felrakja a Yarn környezetet
 - yarn upgrade--latest 	//frissíti a yarn környezetet a legfrissebbre
