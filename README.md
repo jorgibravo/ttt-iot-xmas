@@ -71,6 +71,7 @@ Verziók lekérdezése
 - nvm -v
 - npm -v
 - node -v
+- nvm --version 
 
 Mappa létrhozás és feltöltés és git clone-al
 - mkdir Development		//Csinál egy Development mappát
