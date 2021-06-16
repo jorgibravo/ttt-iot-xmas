@@ -91,6 +91,7 @@ Futtatás
 - yarn install
 - yarn build
 - yarn start
+- npm install express
 - sudo node ./main/index.js
 
 Startupkor indítás
