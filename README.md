@@ -79,6 +79,7 @@ Mappa létrhozás és feltöltés és git clone-al
 
 Git parancsok
 - git clone https://github.com/jorgibravo/ttt-iot-xmas.git	//lemásolja Githubrol a repot
+- cd ttt-iot-xmas
 - git branch	//melyik branchben vagyok
 - git pull	//frissiti a branch tartalmát
 - git checkout peti	//átvált a Peti branchre
