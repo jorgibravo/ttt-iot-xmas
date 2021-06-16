@@ -92,6 +92,7 @@ Futtatás
 - yarn build
 - yarn start
 - npm install express
+- yarn add swagger-ui-express
 - sudo node ./main/index.js
 
 Startupkor indítás
