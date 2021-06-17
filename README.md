@@ -47,6 +47,7 @@ Oprendszer+alapbeállítások
 - Név változtatás
 - SSH engedélyezés
 - ssh pi@192.168.1.xxx 	//Távoli kapcsolódás terminálból
+- ssh-keygen -f "/Users/Peti/.ssh/known_hosts" -R "192.168.1.246" //ha kell ssh fingerprint tisztítani.
 
 Programok telepítése
 - sudo apt-get update	 //alap command készletet frissíti
