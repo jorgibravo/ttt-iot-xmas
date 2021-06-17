@@ -100,8 +100,6 @@ Futtatás
 - yarn install
 - yarn build
 - yarn start
-- npm install express
-- npm i rpi-ws281x-native@0.8.2
 - sudo node ./main/index.js
 
 Startupkor indítás
@@ -134,8 +132,37 @@ sudo node ./main/index.js
 ### Final Code
 > The master branch has the final code, that you can run on your computer after cloning the repo with the following commands:
 
+## fullos installkód
 
----
+- sudo apt-get update
+- sudo apt-get upgrade
+- uname -m
+- wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv6l.tar.gz
+- tar -xzf node-v8.10.0-linux-armv6l.tar.gz
+- cd node-v8.10.0-linux-armv6l/
+- sudo cp -R * /usr/local/
+- sudo curl -o- -L https://yarnpkg.com/install.sh | bash
+- yarn upgrade--latest
+- curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+- nvm install --lts
+- sudo apt install git-all
+- npm i rpi-ws281x-native@0.8.2
+- npm i express@4.16.2
+- npm i swagger-ui-express@2.0.13
+- npm i onoff@1.1.8
+- mkdir Development
+- cd Development
+- git clone https://github.com/jorgibravo/ttt-iot-xmas.git
+- cd ttt-iot-xmas
+- git branch
+- git pull
+- git checkout peti
+- cd Development	//ha nem ott vagyok akkor belép a developmentbe
+- cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
+- yarn install
+- yarn build
+- yarn start
+- sudo node ./main/index.js
 
 
 ### Sources:
