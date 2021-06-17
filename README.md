@@ -142,6 +142,7 @@ sudo node ./main/index.js
 - cd node-v8.10.0-linux-armv6l/
 - sudo cp -R * /usr/local/
 - sudo curl -o- -L https://yarnpkg.com/install.sh | bash
+- cd
 - yarn upgrade--latest
 - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 - nvm install --lts
@@ -157,8 +158,6 @@ sudo node ./main/index.js
 - git branch
 - git pull
 - git checkout peti
-- cd Development	//ha nem ott vagyok akkor belép a developmentbe
-- cd ttt-iot-xmas	//ha nem ott vagyok akkor belép a ttt-iot-xmasbe
 - yarn install
 - yarn build
 - yarn start
