@@ -94,7 +94,7 @@ Futtatás
 - yarn build
 - yarn start
 - npm install express
-- yarn add swagger-ui-express
+- npm i rpi-ws281x-native@0.8.2
 - sudo node ./main/index.js
 
 Startupkor indítás
