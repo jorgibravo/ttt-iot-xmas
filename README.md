@@ -19,6 +19,7 @@ The purpose of this demonstration is to showcase an example project that can be 
 ##### Back-End:
 - Node Js v8.10.0
 - Swagger with OpenApi 3
+- yarn 1.22.5
 - rpi-ws281x-native@0.8.2
 - express@4.16.2
 - swagger-ui-express@2.0.13
