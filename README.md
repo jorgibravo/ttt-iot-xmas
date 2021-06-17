@@ -66,7 +66,10 @@ Node installálás
 - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash //??
 - nvm install --lts 	//felrakja az NVM környezetet, ez órákig tart
 - sudo apt install git-all  //Githez szükséges parancs környezetet rakja fel
-- 
+- npm i rpi-ws281x-native@0.8.2
+- npm i express@4.16.2
+- npm i swagger-ui-express@2.0.13
+- npm i onoff@1.1.8
 
 Verziók lekérdezése
 - yarn -v  
