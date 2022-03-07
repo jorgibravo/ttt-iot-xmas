@@ -18,7 +18,7 @@ const lightFunctions = require('./lightFunctions');
 const ledekSzamaEgyLepcsonel = 42;
 const lepcsokSzama = 16;
 const lepcsoLedek = [];
-let lepcsoColor = lightFunctions.rgb2Int(255, 229, 180);
+let lepcsoColor = lightFunctions.rgb2Int(125, 115, 90);
 let ledLepcsoId = 0;
 for (let i = 0; i < lepcsokSzama; i += 1) {
   lepcsoLedek[i] = [];
@@ -190,7 +190,7 @@ if (type === 'red') {
       //ez a for teszi az egészet fehérre mielőtt lekapcsolna
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {   
             for (let i = 0; i < NUM_LEDS; i += 1) {
-                pixelData[i] = lightFunctions.rgb2Int(255, 229, 180);
+                pixelData[i] = lightFunctions.rgb2Int(125, 115, 90);
                 }
                  ws281x.render(pixelData);
         }
@@ -256,7 +256,7 @@ const setLightMode = type => {
       if (type === 'lepcsolelentrol' || type === 'lepcsolefentrol') {
       lepcsoColor = lightFunctions.rgb2Int(0, 0, 0);      
       } else if (type === 'lepcsofellentrol' || type === 'lepcsofelfentrol') {        
-      lepcsoColor = lightFunctions.rgb2Int(255, 229, 180);
+      lepcsoColor = lightFunctions.rgb2Int(125, 115, 90);
       }
       
       break;
